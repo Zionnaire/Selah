@@ -1,0 +1,73 @@
+# Render Blueprint for SELAH: one static site (the web app) and one web service (the API).
+# Create it in Render with New > Blueprint and point it at this repository.
+# NOTE: written from Render's documented schema but not yet run against Render.
+# Render validates the file when you create the Blueprint, so fix anything it reports.
+#
+# DOMAINS: after the first deploy, attach custom domains in each service's Settings so the app and API
+# share a registrable domain, for example app.example.org and api.example.org.
+# Without that, browsers treat two onrender.com hosts as different sites and the sign-in cookie is not sent.
+# See docs/deployment.md.
+
+services:
+  - type: web
+    name: selah-app
+    runtime: static
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @selah/web build
+    staticPublishPath: ./Frontend/dist
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Used once sign in ships. The public URL of the API, no trailing slash.
+      - key: VITE_API_URL
+        sync: false
+    headers:
+      # The service worker must always be re-checked or users get stuck on an old version.
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    routes:
+      # Single page app: every path serves the app, the router takes it from there.
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  - type: web
+    name: selah-api
+    runtime: node
+    # The free plan sleeps after a period of inactivity and the next request waits for it to wake.
+    # Use a paid plan before real users depend on sign in. Check Render's current pricing.
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @selah/api build
+    startCommand: node Backend/dist/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      # The exact origin of the web app, for example https://app.example.org
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: Mongodb_URI
+        sync: false
+      - key: Groq_API_KEY
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: COOKIE_SAME_SITE
+        value: lax
+      - key: EMAIL_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false

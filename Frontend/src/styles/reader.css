@@ -1,0 +1,424 @@
+/* ---------- Bible reader ---------- */
+.reader {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.reader .pagebar {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+.reader-tools {
+  display: inline-flex;
+  gap: 2px;
+}
+.reader-body {
+  display: grid;
+  grid-template-columns: 224px minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+.reader.has-panel .reader-body {
+  grid-template-columns: 224px minmax(0, 1fr) 360px;
+}
+
+/* Book list */
+.booklist {
+  position: sticky;
+  top: var(--topbar-h);
+  align-self: start;
+  max-height: calc(100dvh - var(--topbar-h));
+  overflow-y: auto;
+  padding: 14px 10px 28px;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+.booklist-group {
+  margin: 14px 8px 6px;
+  color: var(--text-3);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.booklist-group:first-child {
+  margin-top: 2px;
+}
+.booklist-item {
+  display: block;
+  padding: 7px 10px;
+  border-radius: var(--r-sm);
+  color: var(--text-2);
+  font-size: var(--text-base);
+  text-decoration: none;
+}
+.booklist-item:hover {
+  background: var(--surface-2);
+}
+.booklist-item.is-current {
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+  color: var(--text);
+  font-weight: 600;
+}
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 8px 4px 12px;
+}
+.chapter-grid a {
+  display: grid;
+  place-items: center;
+  height: 30px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+.chapter-grid a:hover {
+  background: var(--border-strong);
+}
+.chapter-grid a.is-current {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+}
+:root[data-theme='dark'] .chapter-grid a.is-current {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+/* Reading column */
+.reader-col {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 18px 40px 140px;
+}
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  min-height: 24px;
+  margin-bottom: 22px;
+  font-size: var(--text-sm);
+}
+.chapter-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-3);
+  text-decoration: none;
+}
+.chapter-nav a:hover {
+  color: var(--text);
+}
+.chapter-title {
+  margin-bottom: 22px;
+  font: 600 clamp(2.25rem, 4vw, 3rem) / 1.05 var(--font-display);
+  color: var(--heading);
+}
+
+.verses {
+  font-family: var(--font-read);
+  font-size: var(--scripture-size, 1.1875rem);
+  line-height: 1.85;
+  color: var(--text);
+}
+.verses.is-lines .verse {
+  display: block;
+  padding-block: 2px;
+}
+.verse {
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background var(--dur-fast) var(--ease);
+}
+.verse:hover:not(.is-plain) {
+  background: color-mix(in srgb, var(--verse-select) 55%, transparent);
+}
+.verse.is-highlight {
+  background: var(--verse-bg);
+  box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--verse-edge) 70%, transparent);
+}
+.verse.is-selected {
+  background: var(--verse-select);
+  box-shadow: inset 0 -2px 0 var(--verse-edge);
+}
+.verse.is-plain {
+  cursor: default;
+}
+.vnum {
+  margin-right: 3px;
+  font: 600 0.625rem var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  color: var(--ref);
+  vertical-align: super;
+  line-height: 0;
+}
+.vnum svg {
+  margin-right: 2px;
+  vertical-align: baseline;
+}
+.verses-skeleton {
+  display: grid;
+  gap: 16px;
+}
+.attribution {
+  margin-top: 36px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: var(--text-sm);
+}
+
+.parallel {
+  display: grid;
+  gap: 4px;
+}
+.parallel-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.parallel-row .verses {
+  font-size: calc(var(--scripture-size, 1.1875rem) - 0.125rem);
+  line-height: 1.7;
+}
+
+/* Floating selection bar */
+.selbar {
+  position: fixed;
+  bottom: 22px;
+  left: calc(var(--rail-w) + 224px + ((100vw - var(--rail-w) - 224px) / 2));
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: calc(100vw - 24px);
+  padding: 6px 8px;
+  border-radius: var(--r-lg);
+  background: var(--navy);
+  color: #fff;
+  box-shadow: var(--shadow-pop);
+  overflow-x: auto;
+  animation: rise var(--dur) var(--ease);
+}
+.reader.has-panel .selbar {
+  left: calc(var(--rail-w) + 224px + ((100vw - var(--rail-w) - 224px - 360px) / 2));
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+}
+.selbar-ref {
+  padding: 0 12px 0 8px;
+  color: var(--gold);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.selbar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 11px;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: #e6e8ee;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.selbar button:hover {
+  background: var(--navy-2);
+}
+.selbar button[aria-pressed='true'] {
+  color: var(--gold);
+}
+.selbar .selbar-close {
+  padding: 0 8px;
+  color: #9ea5b5;
+}
+
+/* Side panel */
+.sidepanel {
+  position: sticky;
+  top: var(--topbar-h);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--topbar-h));
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+  background: var(--surface);
+}
+.sidepanel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 12px;
+}
+.sidepanel-head h2 {
+  font: 600 1.375rem / 1.2 var(--font-display);
+  color: var(--heading);
+}
+.sidepanel-close {
+  display: none;
+}
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--border);
+}
+.tabs button {
+  padding: 10px 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.tabs button[aria-selected='true'] {
+  border-color: var(--text);
+  color: var(--text);
+}
+.panel-body,
+.sidepanel > .empty,
+.saved-list {
+  padding: 8px 20px 24px;
+}
+.compare-verse {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.compare-verse:last-of-type {
+  border-bottom: 0;
+}
+.compare-line {
+  margin-top: 8px;
+  font: 400 1rem / 1.6 var(--font-read);
+}
+.saved-list {
+  margin: 0;
+  list-style: none;
+}
+.saved-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.saved-main {
+  display: grid;
+  flex: 1;
+  gap: 3px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+.saved-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font: 400 0.9375rem / 1.5 var(--font-read);
+  color: var(--text-2);
+}
+
+/* Tablet: panel becomes a drawer, book list becomes the picker in the bar */
+@media (max-width: 1279px) {
+  .reader.has-panel .reader-body {
+    grid-template-columns: 224px minmax(0, 1fr);
+  }
+  .reader.has-panel .selbar {
+    left: calc(var(--rail-w) + 224px + ((100vw - var(--rail-w) - 224px) / 2));
+  }
+  .sidepanel {
+    position: fixed;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    width: min(420px, 100vw);
+    height: auto;
+    max-height: 62dvh;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+    box-shadow: var(--shadow-pop);
+  }
+  .sidepanel-close {
+    display: grid;
+  }
+}
+@media (max-width: 1100px) {
+  .reader-body,
+  .reader.has-panel .reader-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .booklist {
+    display: none;
+  }
+  .selbar,
+  .reader.has-panel .selbar {
+    left: calc(var(--rail-w) + ((100vw - var(--rail-w)) / 2));
+  }
+}
+@media (max-width: 720px) {
+  .reader .pagebar {
+    gap: 8px;
+    padding: 0 12px;
+    overflow: visible;
+  }
+  .reader .pagebar .select {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .reader .pagebar select {
+    width: 100%;
+    padding-left: 10px;
+    text-overflow: ellipsis;
+  }
+  .reader .pagebar .spacer,
+  .reader .pagebar .searchbox {
+    display: none;
+  }
+  .selbar .lbl {
+    display: none;
+  }
+  .selbar button {
+    padding: 0 10px;
+  }
+  .reader-col {
+    padding: 14px 18px 150px;
+  }
+  .parallel-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .selbar,
+  .reader.has-panel .selbar {
+    left: 50%;
+    bottom: 84px;
+  }
+  .sidepanel {
+    width: 100vw;
+    bottom: 0;
+    padding-bottom: 64px;
+  }
+}

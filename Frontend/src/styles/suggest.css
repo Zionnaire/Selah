@@ -1,0 +1,271 @@
+/* SELAH suggestions in the sermon editor. The blue AI surface, never the Scripture style, except the verses themselves. */
+
+.editor-panel[hidden] {
+  display: none;
+}
+.panel-tabs button[aria-selected='false'] {
+  border-bottom-color: transparent;
+  color: var(--text-3);
+}
+.panel-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.panel-tabs .sheet-close {
+  display: none;
+  margin-left: auto;
+  border-bottom-color: transparent;
+}
+
+.meta-topic {
+  display: block;
+  margin-top: 12px;
+}
+.meta-topic input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  color: var(--text-2);
+  font: 500 var(--text-sm) var(--font-ui);
+}
+.meta-topic input:focus {
+  outline: 0;
+  border-color: var(--focus);
+}
+.meta-topic + .ms-meta {
+  margin-top: 8px;
+}
+
+.insertbar .insert-ai {
+  margin-left: 4px;
+  background: var(--ai-bg);
+  color: var(--ai-text);
+}
+.insertbar .insert-ai:hover {
+  background: var(--ai-border);
+}
+
+.sg-panel {
+  align-content: start;
+}
+.sg-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs, 12px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ai-text);
+}
+.sg-intro {
+  display: grid;
+  gap: 4px;
+}
+.sg-intro p,
+.sg-using {
+  margin: 0;
+}
+.sg-ask {
+  justify-self: start;
+}
+.sg-note {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  padding: 14px;
+  border: 1px solid var(--ai-border);
+  border-radius: var(--r-md);
+  background: var(--ai-bg);
+}
+.sg-note h3 {
+  margin: 0;
+  font-size: var(--text-base);
+}
+.sg-note p {
+  margin: 0;
+}
+
+.sg-cards,
+.sg-refs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.sg-card {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--ai-border);
+  border-radius: var(--r-md);
+  background: var(--ai-bg);
+}
+.sg-card.is-added {
+  opacity: 0.7;
+}
+.sg-heading,
+.sg-body {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  padding: 6px 8px;
+}
+.sg-heading {
+  font-weight: 700;
+}
+.sg-heading:focus,
+.sg-body:focus {
+  outline: 0;
+  border-color: var(--focus);
+}
+.sg-refs-title {
+  margin: 4px 0 0;
+  font-size: var(--text-xs, 12px);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+}
+.sg-refs {
+  gap: 6px;
+}
+.sg-ref-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.sg-ref-open {
+  flex: 1;
+  text-align: left;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ref);
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+.sg-ref-open[aria-expanded='true'] {
+  border-color: var(--focus);
+}
+/* The verses are Scripture, so they carry the Scripture style: gold edge and the reading face. */
+.sg-verses {
+  margin: 6px 0 2px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--gold);
+  background: var(--surface);
+  font-family: var(--font-scripture, var(--font-read, serif));
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+.sg-verses p {
+  margin: 0 0 4px;
+}
+.sg-verses sup {
+  color: var(--ref);
+  font-weight: 700;
+  font-size: 0.7em;
+}
+.sg-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+@media (max-width: 1180px) {
+  /* Below this width the side panel is hidden. Suggestions open as a sheet over the manuscript. */
+  .editor-panel.is-sheet:not([hidden]) {
+    display: flex;
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    height: min(78vh, 640px);
+    width: 100%;
+    box-sizing: border-box;
+    border-left: 0;
+    border-top: 1px solid var(--border-strong);
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+    box-shadow: var(--shadow-pop);
+  }
+  .editor-panel.is-sheet .sheet-close {
+    display: inline-flex;
+  }
+}
+
+.sg-panel,
+.sg-card,
+.sg-note {
+  min-width: 0;
+  box-sizing: border-box;
+}
+.sg-panel > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.sg-panel {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* The editor bar must fit a phone: the long labels drop out and the title shrinks. */
+@media (max-width: 720px) {
+  .editor-bar .hide-sm {
+    display: none;
+  }
+  .editor-title {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .editor-bar .spacer {
+    flex: 0;
+  }
+}
+
+/* Collapsible side panels in the editor, to give the writing more room. */
+.bar-toggle[aria-pressed='false'] {
+  color: var(--text-3);
+}
+.editor-body.no-outline {
+  grid-template-columns: minmax(0, 1fr) 340px;
+}
+.editor-body.no-panel {
+  grid-template-columns: 264px minmax(0, 1fr);
+}
+.editor-body.no-outline.no-panel {
+  grid-template-columns: minmax(0, 1fr);
+}
+.editor-body.no-outline .outline {
+  display: none;
+}
+.editor-body.no-panel .editor-panel {
+  display: none;
+}
+@media (max-width: 1180px) {
+  /* The side panel is a sheet at this width, so its toggle has nothing to do. */
+  .bar-toggle-panel {
+    display: none;
+  }
+  .editor-body.no-panel .editor-panel.is-sheet:not([hidden]) {
+    display: flex;
+  }
+  .editor-body.no-outline,
+  .editor-body.no-outline.no-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .editor-body.no-panel {
+    grid-template-columns: 232px minmax(0, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .editor-body.no-panel,
+  .editor-body.no-outline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

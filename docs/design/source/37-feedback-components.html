@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Feedback components</title>
+<link rel="stylesheet" href="selah.css">
+<link rel="stylesheet" href="selah-batch4.css">
+
+</head>
+<body class="plain">
+<div class="page-canvas">
+  <h1>Feedback components</h1>
+  <p class="caption">Toasts, banners, dialogs and sync states. Calm, specific wording: say what happened and what to do. Never claim &ldquo;synced&rdquo; when work is only on the device.</p>
+  <div class="spec">
+    <div class="specgrid">
+      <section><h3>Toasts</h3><div class="stack">
+        <div class="toast ok"><svg class="i lead" viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div class="t">Sermon exported<small>Saved to your downloads.</small></div><button class="x" aria-label="Dismiss"><svg class="i " viewBox="0 0 24 24" width="16" height="16" stroke-width="1.7" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+        <div class="toast info"><svg class="i lead" viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg><div class="t">Syncing 3 changes</div></div>
+        <div class="toast warn"><svg class="i lead" viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg><div class="t">You are offline<small>Changes are saved on this device and will sync later.</small></div></div>
+        <div class="toast err"><svg class="i lead" viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div class="t">Could not save<small>Keep this tab open and try again.</small></div><button class="act">Try again</button></div>
+        <div class="toast ok"><svg class="i lead" viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg><div class="t">Moved to Recently deleted</div><button class="act">Undo</button></div>
+      </div></section>
+      <section><h3>Banners</h3><div class="stack">
+        <div class="banner warn"><svg class="i " viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg><span><b>Offline.</b> Everything you need is on this device. SELAH assistant needs internet.</span></div>
+        <div class="banner warn"><svg class="i " viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/></svg><span><b>This browser is not keeping data.</b> Close other SELAH tabs, or your work will be lost when you close this one.</span><span class="spacer"></span><button class="btn" type="button">How to fix</button></div>
+        <div class="banner info"><svg class="i " viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg><span>A new version of SELAH is ready.</span><span class="spacer"></span><button class="btn" type="button">Reload</button></div>
+        <div class="banner err"><svg class="i " viewBox="0 0 24 24" width="18" height="18" stroke-width="1.7" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span><b>Your session ended.</b> Your work is safe on this device. Sign in to keep syncing.</span><span class="spacer"></span><button class="btn" type="button">Sign in</button></div>
+      </div>
+      <h3 style="margin-top:24px">Sync states (rail footer)</h3>
+      <div class="stack" style="background:var(--navy);padding:14px;border-radius:12px">
+        <div class="syncstate"><span class="dot ok"></span><div>Synced 2 minutes ago</div></div>
+        <div class="syncstate"><span class="dot busy"></span><div>Syncing<span class="sm">3 changes</span></div></div>
+        <div class="syncstate"><span class="dot wait"></span><div>Waiting to sync<span class="sm">5 changes on this device</span></div></div>
+        <div class="syncstate"><span class="dot off"></span><div>Offline<span class="sm">Saved on this device</span></div></div>
+        <div class="syncstate"><span class="dot bad"></span><div>1 sermon needs your choice</div></div>
+        <div class="syncstate"><span class="dot off"></span><div>Signed out<span class="sm">Working on this device</span></div></div>
+      </div></section>
+    </div>
+
+    <section><h3>Dialogs</h3>
+      <div class="flow three">
+        <div class="stage dark"><div class="dialog"><h3>Delete this sermon?</h3><p>It moves to Recently deleted for 30 days, where you can restore it.</p><div class="actions"><button class="btn" type="button">Cancel</button><button class="btn danger" type="button">Delete</button></div></div></div>
+        <div class="stage dark"><div class="dialog"><h3>Sign out with unsynced work?</h3><p>5 changes on this device have not been backed up. They stay here, and sync the next time you sign in on this device.</p><div class="actions"><button class="btn" type="button">Stay signed in</button><button class="btn primary" type="button">Sign out</button></div></div></div>
+        <div class="stage dark"><div class="dialog"><h3>Your session ended</h3><p>For your security you were signed out. Your work is safe on this device. Sign in to start syncing again.</p><div class="actions"><button class="btn" type="button">Not now</button><button class="btn primary" type="button">Sign in</button></div></div></div>
+      </div></section>
+
+    <div class="specgrid">
+      <section><h3>Buttons</h3><div class="inline">
+        <button class="btn primary" type="button">Primary</button><button class="btn" type="button">Secondary</button>
+        <button class="btn gilt" type="button">Gold, once per screen</button><button class="btn ghost" type="button">Ghost</button>
+        <button class="btn danger" type="button">Destructive</button><button class="btn primary load" type="button"><span class="spin"></span> Signing in</button><button class="btn primary dis" type="button">Disabled</button>
+      </div></section>
+      <section><h3>Fields</h3><div class="form" style="max-width:380px">
+        <div class="field"><label>Default</label><div class="input " style="color:var(--ink-3)">Placeholder text</div></div>
+        <div class="field"><label>Focused</label><div class="input focus" style="">daniel@gracechurch</div></div>
+        <div class="field"><label>Error</label><div class="input err" style="">daniel@gracechurch</div><div class="err-msg"><svg class="i " viewBox="0 0 24 24" width="15" height="15" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg> Enter a full email address, for example name@example.org.</div></div>
+        <div class="field"><label>Disabled</label><div class="input dis" style="">Locked while signing in</div></div>
+      </div></section>
+    </div>
+  </div>
+</div>
+</body>
+</html>

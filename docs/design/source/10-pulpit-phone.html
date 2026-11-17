@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Pulpit Mode (phone)</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+body { background: #DCDAD2; }
+.stage { display:flex; gap: 40px; justify-content:center; align-items:flex-start; padding: 40px 40px 30px; }
+.cap { text-align:center; font: 600 14px var(--font-ui); color: var(--ink-2); margin-top: 14px; }
+.cap span { display:block; font-weight:400; font-size:12.5px; color: var(--ink-3); margin-top:2px; }
+
+.dk { --night-950:#101827; --night-800:#172235; --night-700:#273449; --night-900:#172235; background: #101827 !important; color:#E9ECF3; }
+.ptop { display:flex; align-items:center; gap: 10px; padding: 4px 20px 12px; font-size: 13px; color:#9EA5B5; border-bottom:1px solid var(--night-800); }
+.ptop .t { font: 600 20px var(--font-ui); color:#fff; font-variant-numeric: tabular-nums; }
+.ptop i { width:7px; height:7px; border-radius:50%; background:#6FBF8A; display:inline-block; margin-right:4px; }
+.glow { position:absolute; left:50%; top:44px; width:2px; height:70px; transform:translateX(-50%); background: linear-gradient(rgba(245,235,200,.7), transparent); }
+.pbody { padding: 26px 24px; }
+.pbody .w { font: 600 14px var(--font-ui); color: var(--gilt-400); }
+.pbody h1 { font: 500 36px/1.1 var(--font-read); margin: 8px 0 22px; color:#fff; }
+.pbody .kl { font: 400 23px/1.45 var(--font-read); color:#DCE0E8; margin: 0 0 16px; }
+.pbody .cue { font: italic 400 20px/1.45 var(--font-read); color: var(--gilt-200); margin: 0 0 16px; }
+.vchip { display:inline-flex; align-items:center; gap:8px; padding: 10px 14px; border-radius: 12px; background: var(--night-800); border:1px solid var(--night-700); color: var(--gilt-200); font: 600 17px var(--font-ui); }
+.pnav { position:absolute; left:0; right:0; bottom:0; padding: 12px 16px 30px; border-top:1px solid var(--night-800); display:grid; grid-template-columns: 64px 1fr 64px; gap: 10px; align-items:center; }
+.pnav .big { height: 64px; border-radius: 18px; background: var(--night-800); border:1px solid var(--night-700); display:grid; place-items:center; color:#fff; }
+.pnav .big svg { width: 28px; height:28px; stroke-width:2; }
+.pnav .mid { text-align:center; font-size: 12.5px; color:#9EA5B5; }
+.pnav .mid b { display:block; font: 500 16px var(--font-read); color:#fff; margin-top:2px; }
+.pnav .dots { display:flex; gap:5px; justify-content:center; margin-top:8px; }
+.pnav .dots i { width:18px; height:4px; border-radius:3px; background: var(--night-700); display:block; }
+.pnav .dots i.d { background: var(--night-500); } .pnav .dots i.c { background: var(--gilt-400); }
+.dim { opacity:.25; }
+.over { position:absolute; left:0; right:0; bottom:0; top: 150px; background: var(--night-800); border-radius: 26px 26px 0 0; padding: 22px 24px; box-shadow: 0 -20px 40px rgba(0,0,0,.4); }
+.over .r { display:flex; justify-content:space-between; align-items:center; font: 600 17px var(--font-ui); color: var(--gilt-400); }
+.over .seg { background: var(--night-900); }
+.over .seg span { color:#9EA5B5; } .over .seg span.on { background: var(--night-700); color:#fff; box-shadow:none; }
+.over .vt { font: 400 25px/1.55 var(--font-read); color:#F4F1E8; margin-top: 18px; }
+.over .back { position:absolute; left:24px; right:24px; bottom: 34px; height: 60px; border-radius: 16px; background: var(--gilt-400); color: var(--night-900); display:flex; align-items:center; justify-content:center; gap:8px; font: 700 17px var(--font-ui); }
+.sum { padding: 24px; }
+.sum h2 { font: 500 30px var(--font-read); color:#fff; margin: 6px 0 4px; }
+.sum .big { font: 600 44px var(--font-ui); color:#fff; font-variant-numeric: tabular-nums; margin-top: 18px; }
+.srow { display:grid; grid-template-columns: 1fr 60px; gap: 6px; align-items:center; font-size: 14px; color:#C9CEDA; margin: 10px 0; }
+.srow .b { height:6px; border-radius: 4px; background: var(--night-700); grid-column: 1 / -1; overflow:hidden; }
+.srow .b i { display:block; height:100%; background: var(--gilt-400); }
+.srow .b i.long { background: #E3A45A; }
+.note { background: var(--night-800); border:1px solid var(--night-700); border-radius: 12px; padding: 12px 14px; color:#9EA5B5; font-size: 14px; margin-top: 16px; }
+.tg { display:flex; justify-content:space-between; align-items:center; margin-top: 16px; font-weight:600; color:#E9ECF3; }
+.tg span.s { width: 44px; height: 26px; border-radius:999px; background: var(--gilt-400); position:relative; }
+.tg span.s::after { content:""; position:absolute; right:3px; top:3px; width:20px; height:20px; border-radius:50%; background:#fff; }
+.save { margin-top: 22px; height: 56px; border-radius: 16px; background: var(--gilt-400); color: var(--night-900); display:flex; align-items:center; justify-content:center; font: 700 16px var(--font-ui); }
+</style>
+</head>
+<body class="">
+
+<div class="stage">
+  <div><div class="phone"><div class="screen dk"><div class="statusbar" style="color:#C9CEDA"><span>9:41</span><span>●●● 64%</span></div>
+  <div class="ptop"><span class="t">18:42</span><span>of 40:00</span><span style="flex:1"></span><span><i></i>On time</span><span><i></i>Offline</span></div>
+  <div class="pbody">
+    <div class="w">Point 2 of 3</div>
+    <h1>Rejecting conformity</h1>
+    <p class="kl" style="color:#7E869A">The world presses its shape onto us every day.</p>
+    <p class="kl">“Be not conformed”: a command, not a suggestion.</p>
+    <p class="cue">Hold up the clay.</p>
+    <span class="vchip"><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Romans 12:2</span>
+  </div>
+  <div class="pnav"><span class="big"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>
+    <div class="mid">Next<b>Renewing the mind</b><div class="dots"><i class="d"></i><i class="d"></i><i class="c"></i><i></i><i></i></div></div>
+    <span class="big"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></div></div></div>
+    <div class="cap">Outline mode<span>Tap the right or left side, or swipe, to move between sections</span></div></div>
+
+  <div><div class="phone"><div class="screen dk"><div class="statusbar" style="color:#C9CEDA"><span>9:41</span><span>●●● 64%</span></div><div class="dim">
+  <div class="ptop"><span class="t">18:42</span><span>of 40:00</span><span style="flex:1"></span><span><i></i>On time</span><span><i></i>Offline</span></div>
+  <div class="pbody">
+    <div class="w">Point 2 of 3</div>
+    <h1>Rejecting conformity</h1>
+    <p class="kl" style="color:#7E869A">The world presses its shape onto us every day.</p>
+    <p class="kl">“Be not conformed”: a command, not a suggestion.</p>
+    <p class="cue">Hold up the clay.</p>
+    <span class="vchip"><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Romans 12:2</span>
+  </div></div>
+    <div class="over"><div class="r">Romans 12:2 <div class="seg"><span class="on">KJV</span><span>WEB</span></div></div>
+      <div class="vt"><sup class="v" style="color:var(--gilt-400)">2</sup>And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.</div>
+      <div class="back"><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Back to notes</div></div>
+  </div></div>
+    <div class="cap">Verse on top of the notes<span>Your place in the sermon is kept; one tap returns</span></div></div>
+
+  <div><div class="phone"><div class="screen dk"><div class="statusbar" style="color:#C9CEDA"><span>9:41</span><span>●●● 64%</span></div>
+    <div class="sum">
+      <div class="small" style="color:#9EA5B5">Session ended</div>
+      <h2>The Power of a Transformed Mind</h2>
+      <div class="big">41:10</div><div style="color:#9EA5B5;font-size:14px">Planned 40:00</div>
+      <div style="margin-top:20px">
+        <div class="srow"><span>Introduction</span><span style="text-align:right">5 min</span><div class="b"><i style="width:100%"></i></div></div>
+        <div class="srow"><span>A living sacrifice</span><span style="text-align:right">11 min</span><div class="b"><i class="long" style="width:100%"></i></div></div>
+        <div class="srow"><span>Rejecting conformity</span><span style="text-align:right">10 min</span><div class="b"><i style="width:100%"></i></div></div>
+        <div class="srow"><span>Renewing the mind</span><span style="text-align:right">9 min</span><div class="b"><i style="width:90%"></i></div></div>
+        <div class="srow"><span>Conclusion and prayer</span><span style="text-align:right">6 min</span><div class="b"><i style="width:100%"></i></div></div>
+      </div>
+      <div class="note">Add a note for next time</div>
+      <div class="tg">Mark as preached today<span class="s"></span></div>
+      <div class="save">Save</div>
+    </div>
+  </div></div>
+    <div class="cap">After the sermon<span>Saved on the phone and synced later</span></div></div>
+</div>
+</body>
+</html>

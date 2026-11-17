@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Mobile app</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+body { background: #DCDAD2; }
+.stage { display:flex; gap: 40px; justify-content:center; align-items:flex-start; padding: 40px 40px 30px; }
+.cap { text-align:center; font: 600 14px var(--font-ui); color: var(--ink-2); margin-top: 14px; }
+.cap span { display:block; font-weight:400; font-size:12.5px; color: var(--ink-3); margin-top:2px; }
+
+.mh { padding: 8px 20px 0; }
+.mh .row img { height: 14px; }
+.mh h2 { font: 600 30px/1.15 var(--font-display); margin: 16px 0 16px; }
+.card-dk { background: var(--night-900); color:#E9ECF3; border-radius: 20px; padding: 18px; position:relative; overflow:hidden; }
+
+.card-dk .w { font-size: 12.5px; color: var(--gilt-200); font-weight:600; }
+.card-dk h3 { font: 600 25px/1.15 var(--font-display); margin: 6px 0 2px; color:#fff; }
+.card-dk .ref { color: var(--gilt-400); }
+.card-dk .acts { display:grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+.card-dk .btn { justify-content:center; background: transparent; color:#E9ECF3; border-color: var(--night-700); font-size: 13.5px; padding: 10px; }
+.card-dk .btn.gilt { background: var(--gilt-400); color: var(--night-900); border-color: var(--gilt-400); }
+.mcard { background: var(--sheet); border-radius: 18px; padding: 14px 16px; margin-top: 12px; border:1px solid var(--stone-200); }
+.mcard .t { font-weight:600; font-size:14px; margin-bottom:6px; }
+.mcard p { font: 400 16px/1.6 var(--font-read); margin: 0; }
+.bh { display:flex; align-items:center; gap: 8px; padding: 6px 16px 10px; border-bottom: 1px solid var(--stone-200); }
+.bh .btn { padding: 7px 11px; font-size: 14px; }
+.btext { padding: 14px 22px; font: 400 18.5px/1.8 var(--font-read); }
+.btext .sel { background: var(--gilt-50); box-shadow: 0 2px 0 var(--gilt-400); }
+.sheetbar { position:absolute; left:0; right:0; bottom: 82px; background: var(--sheet); border-radius: 22px 22px 0 0; box-shadow: 0 -10px 30px rgba(17,23,39,.12); padding: 10px 16px 14px; }
+.sheetbar .grab { width: 40px; height: 4px; border-radius: 4px; background: var(--stone-300); margin: 0 auto 10px; }
+.sheetbar .acts { display:grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-top: 10px; }
+.sheetbar .acts div { display:flex; flex-direction:column; align-items:center; gap:4px; font-size: 11.5px; font-weight:600; color: var(--ink-2); padding: 8px 0; border-radius: 12px; background: var(--stone-100); }
+.sheetbar .acts div.g { background: var(--gilt-400); color: var(--night-900); }
+.eh { display:flex; align-items:center; gap: 8px; padding: 4px 12px 10px; border-bottom:1px solid var(--stone-200); background: var(--sheet); }
+.eh .t { font: 500 16px var(--font-read); flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.secsel { display:flex; align-items:center; justify-content:space-between; margin: 12px 16px 0; padding: 10px 14px; border-radius: 12px; background: var(--stone-200); font-weight:600; font-size: 14px; }
+.etext { padding: 6px 20px; background: var(--sheet); }
+.etext p { font: 400 17px/1.75 var(--font-read); margin: 12px 0; }
+.etext .scripture { font-size: 15px; padding: 10px 12px; }
+.etext .cue { background: #F1F2F6; border-radius: 8px; padding: 9px 12px; font: italic 400 15px/1.55 var(--font-read); color: var(--night-700); margin: 12px 0; }
+.ins { position:absolute; left:0; right:0; bottom:0; background: var(--sheet); border-top:1px solid var(--stone-200); padding: 10px 10px 30px; display:flex; gap: 6px; overflow:hidden; }
+.ins .btn { padding: 8px 10px; font-size: 13px; }
+.lh { padding: 8px 20px 4px; }
+.lh h2 { font: 600 30px var(--font-display); margin: 8px 0 2px; }
+.grp { margin: 16px 16px 0; background: var(--sheet); border-radius: 16px; border:1px solid var(--stone-200); overflow:hidden; }
+.grp .gh { font: 600 13px var(--font-ui); color: var(--ink-3); padding: 12px 14px 6px; }
+.li { display:flex; align-items:center; gap: 10px; padding: 11px 14px; border-top: 1px solid var(--stone-200); font-size: 14.5px; }
+.li .sub { font-size: 12.5px; color: var(--ink-3); }
+.stor { margin: 14px 16px 0; }
+</style>
+</head>
+<body class="">
+
+<div class="stage">
+  <div><div class="phone"><div class="screen"><div class="statusbar"><span>9:41</span><span>●●● 64%</span></div>
+  <div class="mh">
+    <div class="row" style="justify-content:space-between"><div class="row" style="gap:8px"><img src="../brand/selah-symbol-navy.svg" style="height:24px"><img src="../brand/selah-wordmark-navy.svg"></div><span class="avatar" style="background:var(--night-900)">DA</span></div>
+    <h2>Good evening, Pastor Daniel</h2>
+    <div class="card-dk"><div class="w">Sunday 22 November</div><h3>The Power of a Transformed Mind</h3><div class="ref">Romans 12:1–2</div>
+      <div class="bar" style="margin-top:12px;background:var(--night-700)"><i style="width:57%"></i></div>
+      <div class="acts"><span class="btn">Continue</span><span class="btn gilt">Pulpit</span></div></div>
+    <div class="mcard"><div class="t">Continue reading <span class="ref" style="margin-left:6px">Romans 12</span></div><p><sup class="v">3</sup>For I say, through the grace given unto me, to every man that is among you…</p></div>
+    <div class="mcard"><div class="row" style="justify-content:space-between"><div><div class="t" style="margin:0">Walking in Wisdom</div><div class="small muted">Wednesday Bible study</div></div><span class="chip ok"><svg viewBox="0 0 24 24" width="12" height="12" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg>Offline</span></div></div>
+  </div>
+  <nav class="tabbar"><a class="on" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermons</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>Library</a></nav></div></div><div class="cap">Home<span>Next sermon first, not metrics</span></div></div>
+  <div><div class="phone"><div class="screen"><div class="statusbar"><span>9:41</span><span>●●● 64%</span></div>
+  <div class="bh"><span class="btn">Romans 12 <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span><span class="btn">KJV <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span><span style="flex:1"></span><span class="icon-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg></span><span class="icon-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l5-12 5 12M5 14h6M14 18l3.5-8 3.5 8M15.3 15.5h4.4"/></svg></span></div>
+  <div class="btext"><span class="sel"><sup class="v">1</sup>I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service. <sup class="v">2</sup>And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.</span> <sup class="v">3</sup>For I say, through the grace given unto me, to every man that is among you, not to think of himself more highly than he ought to think; but to think soberly, according as God hath dealt to every man the measure of faith.</div>
+  <div class="sheetbar"><div class="grab"></div><div class="row" style="justify-content:space-between"><span class="ref" style="font-size:15px">Romans 12:1–2</span><span class="small muted">4 cross-references</span></div>
+    <div class="acts"><div><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg>Compare</div><div><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h10l4 4v12H5zM15 4v4h4M8 12h8M8 16h5"/></svg>Note</div><div><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study</div><div class="g"><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Sermon</div></div></div>
+  <nav class="tabbar"><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><a class="on" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermons</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>Library</a></nav></div></div><div class="cap">Bible<span>Select verses, then act on them</span></div></div>
+  <div><div class="phone"><div class="screen" style="background:var(--sheet)"><div class="statusbar"><span>9:41</span><span>●●● 64%</span></div>
+  <div class="eh"><span class="icon-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span><span class="t">The Power of a Transformed Mind</span><span class="sync small muted"><span class="dot"></span>Saved</span><span class="icon-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg></span></div>
+  <div class="secsel">1. A living sacrifice <span class="muted small">9 of 10 min <svg viewBox="0 0 24 24" width="14" height="14" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
+  <div class="etext">
+    <p>Paul has spent eleven chapters showing us the mercy of God. Now he asks for a response, and the response is not a ritual. It is a life.</p>
+    <div class="scripture"><div class="who"><span class="ref">Romans 12:1</span><span class="tr">KJV</span></div>I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice…</div>
+    <p>In the Old Testament a sacrifice died on the altar. Paul asks for something harder: an offering that keeps living.</p>
+    <div class="cue">Pause. Ask: what did you bring to God this week?</div>
+  </div>
+  <div class="ins"><span class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Scripture</span><span class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>Cue</span><span class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h4v4c0 3-1 5-4 6M15 7h4v4c0 3-1 5-4 6"/></svg>Story</span><span class="btn sage"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>Ask</span></div></div></div><div class="cap">Sermon editor<span>One section at a time on a phone</span></div></div>
+  <div><div class="phone"><div class="screen"><div class="statusbar"><span>9:41</span><span>●●● 64%</span></div>
+  <div class="lh"><div class="seg"><span>Sermons</span><span>Studies</span><span>Notes</span><span class="on">On this device</span></div>
+    <h2>On this device</h2><div class="small muted">Everything here opens without internet.</div></div>
+  <div class="grp"><div class="gh">Waiting to sync</div>
+    <div class="li"><span class="sync"><span class="dot pending"></span></span><div style="flex:1">2 changes<div class="sub">Will send when you’re online</div></div><span class="btn sm">Retry</span></div>
+    <div class="li"><span style="color:var(--risk)"><svg viewBox="0 0 24 24" width="18" height="18" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 16H3zM12 10v4M12 17h.01"/></svg></span><div style="flex:1">Walking in Wisdom<div class="sub">Edited on two devices</div></div><span class="btn sm primary">Choose</span></div></div>
+  <div class="grp"><div class="gh">Bibles</div>
+    <div class="li"><div style="flex:1">King James Version<div class="sub">Downloaded</div></div><span class="chip ok"><svg viewBox="0 0 24 24" width="12" height="12" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg>Offline</span></div>
+    <div class="li"><div style="flex:1">World English Bible<div class="sub">Downloaded</div></div><span class="chip ok"><svg viewBox="0 0 24 24" width="12" height="12" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg>Offline</span></div>
+    <div class="li"><div style="flex:1">Yoruba Bible<div class="sub">Coming when licensed</div></div><span class="chip">Soon</span></div></div>
+  <div class="grp"><div class="gh">Pulpit copies</div>
+    <div class="li"><div style="flex:1">The Power of a Transformed Mind<div class="sub">Up to date</div></div><span class="icon-btn"><svg viewBox="0 0 24 24" width="18" height="18" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></span></div>
+    <div class="li"><div style="flex:1">Walking in Wisdom<div class="sub">Older than your latest edit</div></div><span class="btn sm">Refresh</span></div></div>
+  <nav class="tabbar"><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study</a><a class="" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermons</a><a class="on" href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>Library</a></nav></div></div><div class="cap">On this device<span>Downloads, sync and conflicts</span></div></div>
+</div>
+</body>
+</html>

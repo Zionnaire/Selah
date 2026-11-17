@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Outline builder</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.pad { padding: 28px 40px 40px; }
+.lead { color: var(--ink-3); margin: 6px 0 22px; max-width: 70ch; }
+.cardx { background: var(--sheet); border:1px solid var(--stone-200); border-radius: var(--r-lg); }
+.th { font: 600 13px var(--font-ui); color: var(--ink-3); }
+.vt { font: 400 17px/1.75 var(--font-read); }
+.vt sup { font: 600 10.5px var(--font-ui); color: var(--gilt-600); margin-right: 3px; }
+.grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sect { font: 600 22px var(--font-display); color: var(--navy); margin: 26px 0 10px; }
+.kv { display:grid; grid-template-columns: 150px 1fr; gap: 8px 16px; font-size: 14px; }
+.kv dt { color: var(--ink-3); } .kv dd { margin:0; }
+
+body{height:100vh;overflow:hidden}
+.ebar{height:58px;display:flex;align-items:center;gap:12px;padding:0 18px;background:var(--sheet);border-bottom:1px solid var(--stone-200)}
+.ebar .crumb{display:flex;align-items:center;gap:4px;color:var(--ink-3);font-weight:600;font-size:13.5px;text-decoration:none}
+.ebar .title{font:500 17px var(--font-read)}
+.ob{display:grid;grid-template-columns:1fr 320px;height:calc(100vh - 58px)}
+.ob section{overflow:auto;padding:24px 40px}
+.cent{background:var(--navy);color:#E8ECF4;border-radius:12px;padding:16px 20px;margin-bottom:14px}
+.cent .th{color:var(--gold-bg)} .cent p{font:400 18px/1.55 var(--font-read);margin:6px 0}
+.cent .small{color:#AEB6C7}
+.pt{background:var(--sheet);border:1px solid var(--stone-200);border-radius:12px;margin-bottom:10px}
+.pt.open{border-color:var(--gold-dark);box-shadow:0 0 0 1px var(--gold-dark)}
+.pth{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.pth .g{color:var(--stone-300)} .pth .g svg{stroke-width:3}
+.num{width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 12px var(--font-ui)}
+.pth b{font:600 16px var(--font-read)}
+.root{display:inline-flex;align-items:center;gap:4px;font:600 11.5px var(--font-ui);color:var(--gilt-600);background:var(--gilt-50);border-radius:999px;padding:2px 8px}
+.ptb{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 14px 48px}
+.slot{border:1px solid var(--stone-200);border-radius:8px;padding:8px 10px;font:400 14.5px/1.5 var(--font-read)}
+.slot span{display:block;font:600 11.5px var(--font-ui);color:var(--ink-3);margin-bottom:2px}
+.slot.empty{border-style:dashed;color:var(--ink-3);font-family:var(--font-ui);font-size:13px}
+.obs{background:var(--sheet);border-left:1px solid var(--stone-200);padding:18px}
+.obs .btn{justify-content:flex-start}
+</style>
+</head>
+<body class="">
+<header class="ebar"><a class="crumb" href="06-sermon-editor.html"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Editor</a><span class="title">The Power of a Transformed Mind</span><div class="seg" style="margin-left:14px"><span class="on">Outline</span><span>Manuscript</span></div><span style="flex:1"></span><button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>Suggest structure</button><button class="btn primary">Write manuscript from outline</button></header>
+<div class="ob">
+  <section>
+    <div class="cent"><div class="th">Central idea</div><p>God’s mercy calls for a whole-life response: offered bodies and renewed minds.</p><div class="small muted">Main passage <span class="refchip">Romans 12:1–2</span></div></div>
+    <div class="pt"><div class="pth"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><b>Introduction</b><span class="small muted" style="margin-left:auto">Mercy first, response second</span></div></div>
+    <div class="pt open"><div class="pth"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><span class="num">1</span><b>A living sacrifice</b><span class="root"><svg viewBox="0 0 24 24" width="13" height="13" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Rooted in Romans 12:1</span><span class="row" style="gap:2px;margin-left:auto"><button class="icon-btn" title="Split"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg></button><button class="icon-btn" title="More"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg></button></span></div>
+<div class="ptb"><div class="slot"><span>Explanation</span>Offer your whole life to God in response to his mercy.</div><div class="slot"><span>Scripture</span><span class="refchip">Romans 12:1</span></div><div class="slot"><span>Story</span>The trader’s first sale</div><div class="slot"><span>Application</span>Give God your working week, not only Sunday.</div></div></div><div class="pt"><div class="pth"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><span class="num">2</span><b>Rejecting conformity</b><span class="root"><svg viewBox="0 0 24 24" width="13" height="13" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Rooted in Romans 12:2a</span><span class="row" style="gap:2px;margin-left:auto"><button class="icon-btn" title="Split"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg></button><button class="icon-btn" title="More"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg></button></span></div>
+<div class="ptb"><div class="slot"><span>Explanation</span>Don’t let the world press its shape onto you.</div><div class="slot"><span>Scripture</span><span class="refchip">Romans 12:2a</span></div><div class="slot empty"><span>Story</span>Add a story</div><div class="slot"><span>Application</span>Name one way culture shapes your choices.</div></div></div><div class="pt"><div class="pth"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><span class="num">3</span><b>Renewing the mind</b><span class="root"><svg viewBox="0 0 24 24" width="13" height="13" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Rooted in Romans 12:2b</span><span class="row" style="gap:2px;margin-left:auto"><button class="icon-btn" title="Split"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg></button><button class="icon-btn" title="More"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h.01M12 12h.01M19 12h.01"/></svg></button></span></div>
+<div class="ptb"><div class="slot"><span>Explanation</span>God changes how we think, and then we can recognise his will.</div><div class="slot"><span>Scripture</span><span class="refchip">Romans 12:2b</span></div><div class="slot empty"><span>Story</span>Add a story</div><div class="slot empty"><span>Application</span>Add an application</div></div></div>
+    <button class="btn ghost" style="margin:6px 0 14px"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Add point</button>
+    <div class="pt"><div class="pth"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><b>Conclusion</b><span class="small muted" style="margin-left:auto">Not started</span></div></div>
+  </section>
+  <aside class="obs">
+    <b>Selected: point 1</b>
+    <div class="small" style="display:grid;gap:8px;margin-top:12px"><button class="btn sm">Split into two points</button><button class="btn sm">Merge with point 2</button><button class="btn sm">Move to sub-point</button></div>
+    <div class="ai" style="margin-top:18px"><div class="label"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>SELAH check</div><p class="small" style="margin:0">Each point is tied to a phrase in Romans 12:1–2. Point 3 has no story or application yet.</p></div>
+    <p class="small muted" style="margin-top:16px">“Write manuscript from outline” creates headings and your notes as paragraphs. It doesn’t write new text.</p>
+  </aside>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "selah",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @selah/web --filter @selah/api dev",
+    "dev:web": "pnpm --filter @selah/web dev",
+    "dev:api": "pnpm --filter @selah/api dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "bible:ingest": "node scripts/ingest-bibles.mjs",
+    "xref:ingest": "node scripts/ingest-crossrefs.mjs",
+    "words:ingest": "node scripts/ingest-wordstudy.mjs",
+    "dictionary:ingest": "node scripts/ingest-dictionary.mjs"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
+}

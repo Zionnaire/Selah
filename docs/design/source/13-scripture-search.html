@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Search Scripture</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.pad { padding: 28px 40px 40px; }
+.lead { color: var(--ink-3); margin: 6px 0 22px; max-width: 70ch; }
+.cardx { background: var(--sheet); border:1px solid var(--stone-200); border-radius: var(--r-lg); }
+.th { font: 600 13px var(--font-ui); color: var(--ink-3); }
+.vt { font: 400 17px/1.75 var(--font-read); }
+.vt sup { font: 600 10.5px var(--font-ui); color: var(--gilt-600); margin-right: 3px; }
+.grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sect { font: 600 22px var(--font-display); color: var(--navy); margin: 26px 0 10px; }
+.kv { display:grid; grid-template-columns: 150px 1fr; gap: 8px 16px; font-size: 14px; }
+.kv dt { color: var(--ink-3); } .kv dd { margin:0; }
+mark{background:var(--gold-bg);padding:0 2px;border-radius:2px}</style>
+</head>
+<body class="">
+<div class="shell">
+<aside class="rail" aria-label="Main navigation">
+  <div class="brand">
+    <img class="mark" src="../brand/selah-symbol-gold.svg" alt="">
+    <img class="word" src="../brand/selah-wordmark-ivory.svg" alt="SELAH">
+  </div>
+  <nav><a href="01-overview.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a><a href="02-bible-reader.html" class="on"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a href="03-study-workspace.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study & Research</a><a href="04-sermon-studio-home.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermon Studio</a><a href="08-pulpit-prepare.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Pulpit</a><a href="#" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>My Library</a>
+    <div class="sep"></div>
+    <a href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"/></svg>Settings</a>
+  </nav>
+  <div class="foot">
+    <div class="sync"><span class="dot"></span>Synced 2 minutes ago</div>
+    <div class="me"><span class="avatar">DA</span><div><div style="font-weight:600">Pastor Daniel A.</div><div class="small" style="color:#8C93A3">Grace Assembly, Abuja</div></div></div>
+  </div>
+</aside><main class="main">
+<div class="topbar"><h1>Search Scripture</h1><div class="spacer"></div></div>
+<div class="pad" style="display:grid;grid-template-columns:240px 1fr;gap:28px">
+  <aside>
+    <div class="th" style="margin-bottom:8px">Translation</div><div class="seg"><span class="on">KJV</span><span>WEB</span><span>BSB</span></div>
+    <div class="th" style="margin:18px 0 8px">Where</div>
+    <div class="small" style="display:grid;gap:8px"><span class="row" style="gap:8px"><input type="radio" checked> Whole Bible</span><span class="row" style="gap:8px"><input type="radio"> New Testament</span><span class="row" style="gap:8px"><input type="radio"> Old Testament</span><span class="row" style="gap:8px"><input type="radio"> One book…</span></div>
+    <div class="th" style="margin:18px 0 8px">Match</div>
+    <div class="small" style="display:grid;gap:8px"><span class="row" style="gap:8px"><input type="radio" checked> Exact words</span><span class="row" style="gap:8px"><input type="radio"> All of these words</span><span class="row" style="gap:8px"><input type="radio"> Phrase</span></div>
+    <p class="small muted" style="margin-top:18px">Search works offline in downloaded translations. Typing a reference like “rom 12 2” opens the verse.</p>
+  </aside>
+  <section>
+    <div class="search" style="width:100%;font-size:16px;padding:12px 14px;color:var(--ink)"><svg viewBox="0 0 24 24" width="18" height="18" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>renewing</div>
+    <div class="row" style="justify-content:space-between;margin:16px 0 8px"><b>2 verses in the King James Version</b><span class="small muted">Sorted in Bible order</span></div>
+    <div class="cardx"><div class="list-item"><div class="ref">Romans 12:2</div><p class="vt" style="margin:4px 0 0">And be not conformed to this world: but be ye transformed by the <mark>renewing</mark> of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.</p></div><div class="list-item"><div class="ref">Titus 3:5</div><p class="vt" style="margin:4px 0 0">Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and <mark>renewing</mark> of the Holy Ghost;</p></div></div>
+    <div class="row" style="justify-content:space-between;margin:22px 0 8px"><b>Passages about the same idea</b><span class="chip" style="background:var(--sage-100);color:var(--sage-700)"><svg viewBox="0 0 24 24" width="12" height="12" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>Suggested by meaning, not exact words</span></div>
+    <div class="cardx"><div class="list-item"><div class="ref">Ephesians 4:23</div><p class="vt" style="margin:4px 0 0">And be renewed in the spirit of your mind;</p></div><div class="list-item"><div class="ref">Colossians 3:10</div><p class="vt" style="margin:4px 0 0">And have put on the new man, which is renewed in knowledge after the image of him that created him:</p></div></div>
+  </section>
+</div></main></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Sermon Studio</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.wrapper { padding: 30px 44px 40px; max-width: 1180px; }
+.head { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom: 26px; }
+.upnext { display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 30px; }
+.un { background: var(--sheet); border-radius: var(--r-lg); padding: 20px 22px; border:1px solid var(--stone-200); position:relative; }
+.un.first { background: var(--night-900); color:#E9ECF3; border-color: var(--night-900); }
+.un .date { font-weight:600; font-size:13px; color: var(--gilt-600); }
+.un.first .date { color: var(--gilt-200); }
+.un h3 { font: 600 27px/1.15 var(--font-display); margin: 6px 0 2px; }
+.un .ref { font-size: 13.5px; }
+.un.first .ref { color: var(--gilt-400); }
+.un .meta { display:flex; gap: 10px; align-items:center; margin-top:16px; font-size:13px; color: var(--ink-3); }
+.un.first .meta { color:#9EA5B5; }
+.un .acts { display:flex; gap:8px; margin-top:16px; }
+.un.first .btn { background:transparent; color:#E9ECF3; border-color: var(--night-700); }
+.un.first .btn.gilt { background: var(--gilt-400); color: var(--night-900); border-color: var(--gilt-400); }
+.grid3x { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-bottom: 26px; }
+.grid3x .un { padding: 14px 18px; }
+.filters { display:flex; gap: 10px; align-items:center; margin-bottom: 12px; }
+table { width:100%; border-collapse: collapse; background: var(--sheet); border-radius: var(--r-lg); overflow:hidden; border:1px solid var(--stone-200); }
+th { text-align:left; font: 600 12.5px var(--font-ui); color: var(--ink-3); padding: 12px 16px; border-bottom:1px solid var(--stone-200); background: #FAFAF7; }
+td { padding: 13px 16px; border-bottom:1px solid var(--stone-200); font-size:14px; }
+tr:last-child td { border-bottom:0; }
+td .t { font: 500 16px var(--font-read); }
+</style>
+</head>
+<body class="">
+
+<div class="shell">
+<aside class="rail" aria-label="Main navigation">
+  <div class="brand">
+    <img class="mark" src="../brand/selah-symbol-gold.svg" alt="">
+    <img class="word" src="../brand/selah-wordmark-ivory.svg" alt="SELAH">
+  </div>
+  <nav><a href="01-overview.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a><a href="02-bible-reader.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a href="03-study-workspace.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study & Research</a><a href="04-sermon-studio-home.html" class="on"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermon Studio</a><a href="08-pulpit-prepare.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Pulpit</a><a href="#" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>My Library</a>
+    <div class="sep"></div>
+    <a href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"/></svg>Settings</a>
+  </nav>
+  <div class="foot">
+    <div class="sync"><span class="dot"></span>Synced 2 minutes ago</div>
+    <div class="me"><span class="avatar">DA</span><div><div style="font-weight:600">Pastor Daniel A.</div><div class="small" style="color:#8C93A3">Grace Assembly, Abuja</div></div></div>
+  </div>
+</aside>
+<main class="main">
+  <div class="topbar"><h1>Sermon Studio</h1><div class="spacer"></div>
+    <div class="search"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Find a sermon by title or passage<kbd>Ctrl K</kbd></div>
+  </div>
+  <div class="wrapper">
+    <div class="head">
+      <div><h2 class="page">Your sermons</h2><div class="muted" style="margin-top:6px">Prepare your next message with clarity and conviction.</div></div>
+      <div class="row"><button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>New series</button><a class="btn primary" href="05-new-sermon.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>New sermon</a></div>
+    </div>
+    <h3 class="sec">Preaching next</h3>
+    <div class="upnext">
+      <div class="un first">
+        <div class="date">Sunday 22 November, first service</div>
+        <h3>The Power of a Transformed Mind</h3><div class="ref">Romans 12:1–2</div>
+        <div class="meta"><div class="bar" style="width:160px;background:var(--night-700)"><i style="width:57%"></i></div>4 of 7 sections, 21 of 40 min</div>
+        <div class="acts"><a class="btn" href="06-sermon-editor.html">Continue writing</a><a class="btn" href="07-sermon-review.html">Review</a><a class="btn gilt" href="08-pulpit-prepare.html">Prepare for pulpit</a></div>
+      </div>
+      <div class="un">
+        <div class="date">Wednesday 25 November, Bible study</div>
+        <h3>Walking in Wisdom</h3><div class="ref">Ephesians 5:15–17</div>
+        <div class="meta"><span class="chip dark">Ready</span><span class="chip ok"><svg viewBox="0 0 24 24" width="12" height="12" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg>Pulpit copy on this device</span></div>
+        <div class="acts"><a class="btn" href="#">Open</a><a class="btn" href="09-pulpit-tablet.html">Enter Pulpit</a></div>
+      </div>
+    </div>
+    <div class="grid3x">
+      <div class="un"><div class="date">Recent research</div><div style="margin-top:8px;display:grid;gap:6px;font-size:14px"><span>Understanding Romans 12:1–2</span><span>Renewal of the mind across Scripture</span></div></div>
+      <div class="un"><div class="date">Collections</div><div style="margin-top:8px;display:grid;gap:6px;font-size:14px"><span>Renewed series (4 sermons)</span><span>Psalms of Lament (3 sermons)</span></div></div>
+      <div class="un"><div class="date">Templates</div><div style="margin-top:8px;display:grid;gap:6px;font-size:14px"><span>Three points</span><span>Verse by verse</span><span>My funeral outline</span></div></div>
+    </div>
+    <div class="filters">
+      <div class="seg"><span class="on">All</span><span>Ideas</span><span>Drafting</span><span>Ready</span><span>Delivered</span></div>
+      <span style="flex:1"></span>
+      <button class="btn sm">Book of the Bible <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><button class="btn sm">Series <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><button class="btn sm">Last edited <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+    </div>
+    <table>
+      <thead><tr><th>Sermon</th><th>Passage</th><th>Series</th><th>Status</th><th>Last edited</th><th>Date</th></tr></thead>
+      <tbody><tr><td><div class="t">The Power of a Transformed Mind</div></td><td class="ref">Romans 12:1–2</td><td>Renewed</td><td><span class="chip warn">Drafting</span></td><td class="muted">Today</td><td>Sun 22 Nov</td></tr><tr><td><div class="t">Walking in Wisdom</div></td><td class="ref">Ephesians 5:15–17</td><td><span class=muted>None</span></td><td><span class="chip dark">Ready</span></td><td class="muted">Yesterday</td><td>Wed 25 Nov</td></tr><tr><td><div class="t">Grace That Trains Us</div></td><td class="ref">Titus 2:11–14</td><td>Renewed</td><td><span class="chip ">Idea</span></td><td class="muted">3 Nov</td><td>Not set</td></tr><tr><td><div class="t">The Cost of Discipleship</div></td><td class="ref">Luke 14:25–33</td><td>Following Jesus</td><td><span class="chip ok">Delivered</span></td><td class="muted">8 Nov</td><td>Preached 8 Nov</td></tr><tr><td><div class="t">When God Feels Silent</div></td><td class="ref">Psalm 13</td><td>Psalms of Lament</td><td><span class="chip ok">Delivered</span></td><td class="muted">26 Oct</td><td>Preached twice</td></tr></tbody>
+    </table>
+  </div>
+</main></div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+/* ---------- Study home ---------- */
+.study-home {
+  display: grid;
+  gap: 20px;
+  max-width: 820px;
+  margin: 0;
+}
+.study-home .lead {
+  margin-bottom: 0;
+}
+.study-start {
+  display: grid;
+  gap: 14px;
+}
+.study-input {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.study-input .searchbox {
+  flex: 1;
+  width: auto;
+  min-width: 220px;
+  min-height: 44px;
+}
+.link-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ref);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Workspace ---------- */
+.study-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  flex: 1;
+  min-height: 0;
+}
+.study-sheet {
+  max-width: 760px;
+}
+.study-passage {
+  margin: 4px 0 8px;
+}
+.study-passage p {
+  margin: 0;
+}
+.study-passage .ref {
+  margin-bottom: 4px;
+}
+.ms-section-title.static {
+  display: block;
+  margin: 0 0 8px;
+  font: 700 1.5rem / 1.25 var(--font-read);
+  color: var(--heading);
+}
+.collected {
+  margin-top: 40px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.verse-group {
+  margin-bottom: 18px;
+}
+.group-title {
+  margin: 14px 0 8px;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.collected-verse {
+  margin-bottom: 12px;
+}
+.collected-verse .scripture p {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+.collected-verse .scripture .ref {
+  margin-bottom: 2px;
+}
+.collected-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+.collected-meta input {
+  flex: 1;
+  min-width: 0;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--text-sm);
+}
+.collected-meta input:last-of-type {
+  flex: 0 0 150px;
+}
+.collected-meta input:focus {
+  outline: 0;
+  border-color: var(--focus);
+}
+
+/* ---------- Cross-references and find lists ---------- */
+.xrefs ul,
+.find-hits {
+  margin: 0;
+  padding: 0 20px;
+  list-style: none;
+}
+.xrefs li,
+.find-hits li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.xref-head,
+.find-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.find-row {
+  padding: 8px 0;
+}
+.xref-head .ref {
+  text-decoration: none;
+}
+.xref-head a.ref:hover {
+  text-decoration: underline;
+}
+.xref-text {
+  margin: 6px 0 0;
+  font: 400 0.9688rem / 1.55 var(--font-read);
+  color: var(--text-2);
+}
+.xref-attrib {
+  padding: 14px 20px 24px;
+}
+.sidepanel > .xrefs,
+.editor-panel > .xrefs {
+  padding-bottom: 8px;
+}
+
+/* Tab buttons shared by the reader and study panels */
+.panel-tabs button,
+.panel-tabs .tab-btn {
+  border-bottom: 2px solid transparent;
+  color: var(--text-3);
+}
+.panel-tabs button[aria-selected='true'] {
+  border-bottom-color: var(--text);
+  color: var(--text);
+}
+
+@media (max-width: 1100px) {
+  .study-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .study-body .editor-panel {
+    display: flex;
+    max-height: 45dvh;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+  .study-body .manuscript-wrap {
+    padding: 16px 12px 40px;
+  }
+  .study-sheet {
+    padding: 28px 20px;
+  }
+  .collected-meta {
+    flex-wrap: wrap;
+  }
+  .collected-meta input:last-of-type {
+    flex: 1 1 100%;
+  }
+}

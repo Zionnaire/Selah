@@ -1,0 +1,155 @@
+/* Collapsible side areas. Each choice is remembered on this device. */
+
+/* App navigation rail: collapses to icons, the same look it has on a tablet. */
+.rail-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: transparent;
+  color: #9ea5b5;
+  font: 500 var(--text-sm) var(--font-ui);
+  cursor: pointer;
+}
+.rail-toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e6e8ee;
+}
+.rail-toggle:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.app.rail-collapsed {
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+.app.rail-collapsed .rail {
+  padding-inline: 10px;
+  align-items: center;
+}
+.app.rail-collapsed .rail-brand .word,
+.app.rail-collapsed .rail-link span,
+.app.rail-collapsed .rail-foot .label,
+.app.rail-collapsed .rail-user div {
+  display: none;
+}
+.app.rail-collapsed .rail-brand {
+  padding-inline: 0;
+}
+.app.rail-collapsed .rail-link,
+.app.rail-collapsed .rail-toggle,
+.app.rail-collapsed .sync-line {
+  justify-content: center;
+  padding: 11px;
+}
+.app.rail-collapsed .rail-foot {
+  padding: 0;
+}
+@media (max-width: 1100px) {
+  /* Already icons only at this width. */
+  .rail-toggle {
+    display: none;
+  }
+}
+
+/* Library sections */
+.library.nav-collapsed {
+  grid-template-columns: minmax(0, 1fr);
+}
+.library.nav-collapsed .library-nav {
+  display: none;
+}
+
+/* Study research tools */
+.study-body.tools-collapsed {
+  grid-template-columns: minmax(0, 1fr);
+}
+.study-body.tools-collapsed .editor-panel {
+  display: none;
+}
+
+/* Export options */
+.export-layout.controls-collapsed {
+  grid-template-columns: minmax(0, 1fr);
+}
+.export-layout.controls-collapsed .export-controls {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .study-body.tools-collapsed .editor-panel {
+    display: none;
+  }
+}
+
+/* ---------- Profile picture ---------- */
+.avatar-img {
+  object-fit: cover;
+  background: var(--surface-2);
+}
+.profile {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.profile-photo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.profile-photo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.profile-form {
+  display: grid;
+  gap: 10px;
+  max-width: 420px;
+  justify-items: start;
+}
+.profile-form .afield {
+  width: 100%;
+}
+.theme-toggle {
+  flex-shrink: 0;
+}
+.auth-main {
+  position: relative;
+}
+.auth-theme {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+/* A screen that failed to draw. */
+.boundary {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  max-width: 520px;
+  margin: 12vh auto 0;
+  padding: 0 20px;
+  color: var(--text);
+}
+.boundary h1 {
+  margin: 0;
+  font: 600 1.6rem var(--font-display);
+}
+.boundary p {
+  margin: 0;
+  color: var(--text-2);
+}
+.boundary-actions {
+  display: flex;
+  gap: 8px;
+}
+.boundary pre {
+  white-space: pre-wrap;
+  font-size: var(--text-sm);
+  color: var(--text-3);
+}

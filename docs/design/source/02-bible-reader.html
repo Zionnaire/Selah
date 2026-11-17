@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Bible reader</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.wrap { display:grid; grid-template-columns: 190px 1fr 400px; height: calc(100vh - 60px); }
+.books { border-right:1px solid var(--stone-200); overflow:auto; padding: 14px 10px; font-size: 14px; }
+.books .g { font: 600 12px var(--font-ui); color: var(--ink-3); margin: 6px 8px; }
+.books a { display:block; padding: 6px 8px; border-radius: 6px; text-decoration:none; color: var(--ink-2); }
+.books a.on { background: var(--sheet); color: var(--ink); font-weight:600; box-shadow: var(--shadow-sheet); }
+.chaps { display:grid; grid-template-columns: repeat(4,1fr); gap: 4px; margin: 6px 8px 10px; }
+.chaps span { text-align:center; font-size: 12.5px; padding: 4px 0; border-radius: 4px; background: var(--stone-200); }
+.chaps span.on { background: var(--navy); color: #fff; }
+.reader { overflow:auto; padding: 30px 0 120px; position:relative; }
+.reader .col { max-width: 640px; margin: 0 auto; }
+.pick { display:flex; gap:8px; align-items:center; }
+.pick .btn { font-weight:600; }
+.chap { font: 400 40px/1 var(--font-read); margin: 26px 0 4px; }
+.heading { font: 600 12.5px var(--font-ui); color: var(--ink-3); margin: 22px 0 8px; letter-spacing:.02em; }
+.text { font: 400 19px/1.85 var(--font-read); }
+.text .sel { background: var(--gilt-50); box-shadow: 0 2px 0 var(--gilt-400); border-radius: 2px; }
+.selbar { position:absolute; left:50%; transform:translateX(-50%); bottom:28px; display:flex; gap:4px; align-items:center;
+  background: var(--night-900); color:#E9ECF3; border-radius: 12px; padding: 6px; box-shadow: 0 10px 30px rgba(17,23,39,.3); }
+.selbar .count { font-size:12.5px; color: var(--gilt-200); padding: 0 10px; font-weight:600; }
+.selbar .btn { background:transparent; border-color:transparent; color:#E9ECF3; padding:6px 7px; font-size:13px; }
+.selbar .btn.gilt { background: var(--gilt-400); color: var(--night-900); }
+.side { background: var(--sheet); border-left:1px solid var(--stone-200); display:flex; flex-direction:column; min-height:0; }
+.side .head { padding: 18px 20px 6px; }
+.side .head h3 { font: 500 22px var(--font-read); margin:0; }
+.xref { padding: 14px 20px; border-bottom: 1px solid var(--stone-200); }
+.xref .r { display:flex; justify-content:space-between; align-items:center; }
+.xref p { font: 400 15px/1.6 var(--font-read); margin: 6px 0 0; color: var(--ink-2); }
+.why { font-size: 12.5px; color: var(--ink-3); margin-top: 6px; }
+.src { padding: 12px 20px; font-size: 12.5px; color: var(--ink-3); }
+</style>
+</head>
+<body class="">
+
+<div class="shell">
+<aside class="rail" aria-label="Main navigation">
+  <div class="brand">
+    <img class="mark" src="../brand/selah-symbol-gold.svg" alt="">
+    <img class="word" src="../brand/selah-wordmark-ivory.svg" alt="SELAH">
+  </div>
+  <nav><a href="01-overview.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a><a href="02-bible-reader.html" class="on"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a href="03-study-workspace.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study & Research</a><a href="04-sermon-studio-home.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermon Studio</a><a href="08-pulpit-prepare.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Pulpit</a><a href="#" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>My Library</a>
+    <div class="sep"></div>
+    <a href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"/></svg>Settings</a>
+  </nav>
+  <div class="foot">
+    <div class="sync"><span class="dot"></span>Synced 2 minutes ago</div>
+    <div class="me"><span class="avatar">DA</span><div><div style="font-weight:600">Pastor Daniel A.</div><div class="small" style="color:#8C93A3">Grace Assembly, Abuja</div></div></div>
+  </div>
+</aside>
+<main class="main">
+  <div class="topbar">
+    <div class="pick">
+      <button class="btn">Romans <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="btn">Chapter 12 <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="btn">KJV <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="btn ghost"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg>Parallel</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="search"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Search Scripture, sermons and notes<kbd>Ctrl K</kbd></div>
+    <button class="icon-btn" title="Reading settings"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l5-12 5 12M5 14h6M14 18l3.5-8 3.5 8M15.3 15.5h4.4"/></svg></button>
+  </div>
+  <div class="wrap">
+    <nav class="books" aria-label="Books"><div class="g">New Testament</div><a href="#">Matthew</a><a href="#">Mark</a><a href="#">Luke</a><a href="#">John</a><a href="#">Acts</a><a class="on" href="#">Romans</a><div class="chaps"><span class="">1</span><span class="">2</span><span class="">3</span><span class="">4</span><span class="">5</span><span class="">6</span><span class="">7</span><span class="">8</span><span class="">9</span><span class="">10</span><span class="">11</span><span class="on">12</span><span class="">13</span><span class="">14</span><span class="">15</span><span class="">16</span></div><a href="#">1 Corinthians</a><a href="#">2 Corinthians</a><a href="#">Galatians</a><a href="#">Ephesians</a><a href="#">Philippians</a><a href="#">Colossians</a></nav>
+    <div class="reader">
+      <div class="col">
+        <div class="row" style="justify-content:space-between"><button class="icon-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><span class="muted small">Romans 11</span><span style="flex:1"></span><span class="muted small">Romans 13</span><button class="icon-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="chap">Romans 12</div>
+        <div class="heading">Living sacrifices</div>
+        <p class="text"><span class="sel"><sup class="v">1</sup>I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.</span> <span class="sel"><sup class="v">2</sup>And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.</span> <span class=""><sup class="v">3</sup>For I say, through the grace given unto me, to every man that is among you, not to think of himself more highly than he ought to think; but to think soberly, according as God hath dealt to every man the measure of faith.</span> <span class=""><sup class="v">4</sup>For as we have many members in one body, and all members have not the same office:</span> <span class=""><sup class="v">5</sup>So we, being many, are one body in Christ, and every one members one of another.</span> <span class=""><sup class="v">6</sup>Having then gifts differing according to the grace that is given to us, whether prophecy, let us prophesy according to the proportion of faith;</span> <span class=""><sup class="v">7</sup>Or ministry, let us wait on our ministering: or he that teacheth, on teaching;</span> <span class=""><sup class="v">8</sup>Or he that exhorteth, on exhortation: he that giveth, let him do it with simplicity; he that ruleth, with diligence; he that sheweth mercy, with cheerfulness.</span> </p>
+        <p class="small muted" style="margin-top:28px">King James Version. Public domain.</p>
+      </div>
+      <div class="selbar" role="toolbar" aria-label="Selected verses">
+        <span class="count">Romans 12:1–2</span>
+        <a class="btn" href="12-translation-comparison.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg>Compare</a>
+        <button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>Highlight</button>
+        <button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bookmark</button>
+        <button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study</button>
+        <button class="btn gilt"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Add to sermon</button>
+      </div>
+    </div>
+    <aside class="side">
+      <div class="head"><h3>Romans 12:1–2</h3><div class="small muted">2 verses selected</div></div>
+      <div class="tabs"><a class="on" href="#">Cross-references</a><a href="#">My notes</a><a href="#">Translations</a><a href="#">Ask SELAH</a></div>
+      <div style="overflow:auto"><div class="xref"><div class="r"><span class="ref">Romans 6:13</span><span class="row" style="gap:2px"><button class="icon-btn" title="Open"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="icon-btn" title="Add to sermon"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button></span></div><p>Neither yield ye your members as instruments of unrighteousness unto sin: but yield yourselves unto God, as those that are alive from the dead, and your members as instruments of righteousness unto God.</p></div><div class="xref"><div class="r"><span class="ref">1 Peter 2:5</span><span class="row" style="gap:2px"><button class="icon-btn" title="Open"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="icon-btn" title="Add to sermon"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button></span></div><p>Ye also, as lively stones, are built up a spiritual house, an holy priesthood, to offer up spiritual sacrifices, acceptable to God by Jesus Christ.</p></div><div class="xref"><div class="r"><span class="ref">Ephesians 4:23</span><span class="row" style="gap:2px"><button class="icon-btn" title="Open"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="icon-btn" title="Add to sermon"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button></span></div><p>And be renewed in the spirit of your mind;</p></div><div class="xref"><div class="r"><span class="ref">1 John 2:15</span><span class="row" style="gap:2px"><button class="icon-btn" title="Open"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="icon-btn" title="Add to sermon"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button></span></div><p>Love not the world, neither the things that are in the world. If any man love the world, the love of the Father is not in him.</p></div>
+        <div class="src">Cross-references from OpenBible.info. These are links people have drawn between passages; read each in its context.</div>
+      </div>
+    </aside>
+  </div>
+</main></div>
+</body>
+</html>

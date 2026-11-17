@@ -1,0 +1,134 @@
+/* SELAH design tokens. Palette comes from docs/design/design-reference-index.md.
+   Components read the semantic layer (--bg, --text, --border ...), never the palette,
+   so light, dark and Pulpit themes are a token swap and nothing else. */
+
+:root {
+  /* Palette */
+  --navy: #0b1f44;
+  --navy-deep: #08172f;
+  --navy-2: #16335f;
+  --navy-border: #27406b;
+  --gold: #d4af37;
+  --gold-dark: #b89428;
+  --gold-text: #8a6d1a;
+  --gold-tint: #f5ebc8;
+  --verse-tint: #f8f1da;
+
+  --ok: #15803d;
+  --warn: #b45309;
+  --risk: #b91c1c;
+  --info: #2563eb;
+
+  /* Type */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-read: 'Literata Variable', Literata, Georgia, 'Times New Roman', serif;
+  --font-ui: 'Inter Variable', Inter, 'Segoe UI', system-ui, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.25rem;
+
+  /* Shape and depth */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-full: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+
+  --rail-w: 240px;
+  --topbar-h: 60px;
+
+  /* Light theme (default) */
+  --bg: #f8f7f2;
+  --surface: #fdfcf9;
+  --surface-2: #efeee7;
+  --surface-hover: #f3f2ec;
+  --border: #e6e4da;
+  --border-strong: #dedcd2;
+  --text: #1f2937;
+  --text-2: #374151;
+  --text-3: #64748b;
+  --heading: #0b1f44;
+  --accent: #0b1f44;
+  --accent-text: #ffffff;
+  --accent-hover: #16335f;
+  --ref: #8a6d1a;
+  --verse-bg: #f8f1da;
+  --verse-select: #f5ebc8;
+  --verse-edge: #d4af37;
+  --ai-bg: #eef3fd;
+  --ai-border: #cfdcf7;
+  --ai-text: #1d4ed8;
+  --focus: #b89428;
+  --shadow-sheet: 0 1px 2px rgba(11, 31, 68, 0.06), 0 6px 20px rgba(11, 31, 68, 0.05);
+  --shadow-pop: 0 2px 4px rgba(11, 31, 68, 0.08), 0 12px 32px rgba(11, 31, 68, 0.14);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #101827;
+  --surface: #172235;
+  --surface-2: #273449;
+  --surface-hover: #1d2a40;
+  --border: #243249;
+  --border-strong: #324560;
+  --text: #e8eaf0;
+  --text-2: #c4cad6;
+  --text-3: #94a0b4;
+  --heading: #f3efe2;
+  --accent: #d4af37;
+  --accent-text: #08172f;
+  --accent-hover: #e0bd4f;
+  --ref: #d4af37;
+  --verse-bg: rgba(212, 175, 55, 0.08);
+  --verse-select: rgba(212, 175, 55, 0.2);
+  --ai-bg: #16264a;
+  --ai-border: #27406b;
+  --ai-text: #9db8f5;
+  --focus: #d4af37;
+  --shadow-sheet: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25);
+  --shadow-pop: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+/* Pulpit Mode themes: chosen on the preparation screen, independent of app appearance */
+:root[data-pulpit='dark'] {
+  --bg: #101827;
+  --surface: #172235;
+  --text: #f1efe6;
+  --text-3: #a3adbf;
+  --ref: #e6c766;
+  --cue: #f0dc9a;
+}
+:root[data-pulpit='warm'] {
+  --bg: #f2ead7;
+  --surface: #f8f1de;
+  --text: #2a2418;
+  --text-3: #6d604a;
+  --ref: #7a5f12;
+  --cue: #7a5f12;
+}
+:root[data-pulpit='light'] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #111827;
+  --text-3: #4b5563;
+  --ref: #7a5f12;
+  --cue: #7a5f12;
+}

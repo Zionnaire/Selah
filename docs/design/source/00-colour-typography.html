@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Colour and typography</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+body { background: var(--stone-100); }
+.ct { display:grid; grid-template-columns: 1fr 1fr; gap: 0; height: 100vh; }
+.col { padding: 40px 46px; }
+.col h2 { font: 600 34px var(--font-display); color: var(--navy); margin: 0 0 18px; }
+.sw { display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+.c { border-radius: 10px; overflow:hidden; border:1px solid var(--stone-200); background: var(--sheet); }
+.c i { display:block; height: 58px; }
+.c div { padding: 7px 9px; font: 600 12px var(--font-ui); color: var(--ink); }
+.c div small { display:block; font-weight:400; color: var(--ink-3); font-family: var(--font-ui); }
+.grp { font: 600 12.5px var(--font-ui); color: var(--ink-3); margin: 4px 0 8px; }
+.type { background: var(--sheet); border-left:1px solid var(--stone-200); }
+.spec { border-bottom:1px solid var(--stone-200); padding: 16px 0 18px; }
+.spec .lab { font: 600 12px var(--font-ui); color: var(--ink-3); margin-bottom: 6px; display:flex; justify-content:space-between; }
+.d1 { font: 600 52px/1.05 var(--font-display); color: var(--navy); }
+.d2 { font: 600 30px/1.15 var(--font-display); color: var(--navy); margin-top: 4px; }
+.ui1 { font: 600 16px var(--font-ui); } .ui2 { font: 400 15px/1.5 var(--font-ui); color: var(--ink-2); } .ui3 { font: 500 13px var(--font-ui); color: var(--ink-3); }
+.r1 { font: 400 20px/1.75 var(--font-read); } .r1 sup { font: 600 11px var(--font-ui); color: var(--gilt-600); }
+.roles { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 16px; }
+.roles div { border-radius: 10px; padding: 12px; font-size: 13px; }
+</style>
+</head>
+<body class="">
+
+<div class="ct">
+  <section class="col">
+    <h2>Colour</h2>
+    <div class="grp">Navy</div>
+    <div class="sw"><div class="c"><i style="background:#0B1F44"></i><div>Primary navy<small>#0B1F44</small></div></div><div class="c"><i style="background:#08172F"></i><div>Deep navy<small>#08172F</small></div></div><div class="c"><i style="background:#16335F"></i><div>Secondary navy<small>#16335F</small></div></div><div class="c"><i style="background:#1F2937"></i><div>Charcoal<small>#1F2937</small></div></div></div>
+    <div class="grp">Gold, used sparingly</div>
+    <div class="sw"><div class="c"><i style="background:#D4AF37"></i><div>Antique gold<small>#D4AF37</small></div></div><div class="c"><i style="background:#B89428"></i><div>Dark gold<small>#B89428</small></div></div><div class="c"><i style="background:#F5EBC8"></i><div>Gold background<small>#F5EBC8</small></div></div><div class="c"><i style="background:#8A6D1A"></i><div>Gold text on light<small>#8A6D1A</small></div></div></div>
+    <div class="grp">Surfaces</div>
+    <div class="sw"><div class="c"><i style="background:#F8F7F2"></i><div>Warm ivory<small>#F8F7F2</small></div></div><div class="c"><i style="background:#FDFCF9"></i><div>Light surface<small>#FDFCF9</small></div></div><div class="c"><i style="background:#EFEEE7"></i><div>Secondary surface<small>#EFEEE7</small></div></div><div class="c"><i style="background:#64748B"></i><div>Slate<small>#64748B</small></div></div></div>
+    <div class="grp">Dark theme and status</div>
+    <div class="sw"><div class="c"><i style="background:#101827"></i><div>Dark background<small>#101827</small></div></div><div class="c"><i style="background:#172235"></i><div>Dark surface<small>#172235</small></div></div><div class="c"><i style="background:#273449"></i><div>Dark elevated<small>#273449</small></div></div><div class="c"><i style="background:#2563EB"></i><div>Information<small>#2563EB</small></div></div></div>
+    <div class="sw" style="grid-template-columns:repeat(3,1fr)"><div class="c"><i style="background:#15803D"></i><div>Success<small>#15803D</small></div></div><div class="c"><i style="background:#B45309"></i><div>Warning<small>#B45309</small></div></div><div class="c"><i style="background:#B91C1C"></i><div>Error<small>#B91C1C</small></div></div></div>
+  </section>
+  <section class="col type">
+    <h2>Typography</h2>
+    <div class="spec"><div class="lab"><span>Cormorant Garamond 600</span><span>Brand and editorial headings only</span></div>
+      <div class="d1">Study deeply.</div><div class="d2">The Power of a Transformed Mind</div></div>
+    <div class="spec"><div class="lab"><span>Inter 400–600</span><span>Interface, navigation, forms, controls</span></div>
+      <div class="ui1">Prepare for pulpit</div><div class="ui2">Your Bible and saved sermons open without internet.</div><div class="ui3">Synced 2 minutes ago</div></div>
+    <div class="spec" style="border:0"><div class="lab"><span>Literata 400</span><span>Scripture, sermon manuscripts, long reading</span></div>
+      <div class="r1"><sup>1</sup> I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.</div></div>
+    <div class="roles">
+      <div style="background:var(--gilt-50);border-left:3px solid var(--gold)"><b>Scripture</b><br>Gold edge, Literata, reference and translation</div>
+      <div style="background:var(--sage-100);border:1px solid var(--ai-border)"><b style="color:var(--sage-700)">SELAH suggests</b><br>Blue surface, labelled, evidence tags</div>
+      <div style="background:#F1F2F6"><b>Your own words</b><br>Plain page; pulpit cues in italics</div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

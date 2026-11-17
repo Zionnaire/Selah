@@ -1,0 +1,254 @@
+/* SELAH design system — reference stylesheet for the screen mockups.
+   Tokens here should become packages/design-tokens in the codebase. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400..700&family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,400..600&display=swap");
+
+:root {
+  /* Brand palette (Quiet Scholarship). Values marked "derived" are not in the brief; see DESIGN_GUIDE. */
+  --navy: #0B1F44;
+  --navy-deep: #08172F;
+  --navy-2: #16335F;
+  --night-950: #08172F;
+  --night-900: #0B1F44;
+  --night-800: #16335F;
+  --night-700: #27406B;       /* derived: borders on navy */
+  --night-500: #64748B;
+
+  /* Dark theme (Pulpit Mode, dark appearance) */
+  --dark-bg: #101827;
+  --dark-surface: #172235;
+  --dark-elev: #273449;
+
+  /* Gold: restrained */
+  --gold: #D4AF37;
+  --gold-dark: #B89428;
+  --gold-bg: #F5EBC8;
+  --gilt-600: #8A6D1A;        /* derived: gold text on light surfaces (AA) */
+  --gilt-500: #B89428;
+  --gilt-400: #D4AF37;
+  --gilt-200: #F5EBC8;
+  --gilt-50:  #F8F1DA;        /* derived: verse highlight */
+
+  /* Surfaces */
+  --stone-100: #F8F7F2;       /* warm ivory: app background */
+  --sheet: #FDFCF9;           /* light surface */
+  --stone-200: #EFEEE7;       /* secondary surface, dividers */
+  --stone-300: #DEDCD2;       /* derived: input borders */
+
+  /* Text */
+  --ink: #1F2937;             /* charcoal */
+  --ink-2: #374151;           /* derived */
+  --ink-3: #64748B;           /* slate */
+
+  --ribbon: #B89428;
+
+  /* SELAH (AI) output: information blue family */
+  --sage-700: #1D4ED8;
+  --sage-100: #EEF3FD;
+  --ai-border: #CFDCF7;
+
+  --ok: #15803D;
+  --warn: #B45309;
+  --risk: #B91C1C;
+  --info: #2563EB;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-read: "Literata", Georgia, "Times New Roman", serif;
+  --font-ui: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --shadow-sheet: 0 1px 2px rgba(11, 31, 68, .06), 0 6px 20px rgba(11, 31, 68, .05);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink);
+  background: var(--stone-100);
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+svg { fill: none; stroke: currentColor; stroke-width: 1.7; flex-shrink: 0; }
+a { color: inherit; }
+a.btn, a.icon-btn { text-decoration: none; }
+:focus-visible { outline: 2px solid var(--gilt-500); outline-offset: 2px; }
+
+/* ---------- App shell ---------- */
+.shell { display: grid; grid-template-columns: 232px 1fr; height: 100vh; }
+.shell > .main { overflow: auto; }
+.main > * { flex-shrink: 0; }
+
+.rail {
+  background: var(--night-900);
+  color: #C9CEDA;
+  display: flex; flex-direction: column;
+  padding: 22px 14px 18px;
+  position: relative; overflow: hidden;
+}
+.rail .brand { display: flex; align-items: center; gap: 10px; padding: 0 8px 26px; }
+.rail .brand img.mark { width: 30px; height: 30px; }
+.rail .brand img.word { height: 17px; }
+.rail nav { display: flex; flex-direction: column; gap: 2px; }
+.rail nav a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 10px; border-radius: var(--r-sm);
+  color: #B9BFCC; text-decoration: none; font-weight: 500;
+}
+.rail nav a svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.rail nav a.on { background: var(--night-800); color: #FFF; box-shadow: inset 2px 0 0 var(--gilt-400); }
+.rail .sep { height: 1px; background: var(--night-700); margin: 14px 8px; }
+.rail .foot { margin-top: auto; padding: 0 8px; font-size: 13px; }
+.sync { display: flex; align-items: center; gap: 8px; color: #9EA5B5; }
+.sync .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+.sync .dot.pending { background: var(--warn); }
+.me { display: flex; align-items: center; gap: 10px; margin-top: 14px; color: #E6E8EE; }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--night-700); color: var(--gilt-200);
+  display: grid; place-items: center; font-weight: 600; font-size: 13px;
+}
+
+.main { min-width: 0; display: flex; flex-direction: column; }
+.topbar {
+  height: 60px; display: flex; align-items: center; gap: 14px;
+  padding: 0 28px; border-bottom: 1px solid var(--stone-200); background: var(--stone-100);
+}
+.topbar h1 { font: 600 17px/1 var(--font-ui); margin: 0; }
+.topbar .spacer { flex: 1; }
+.search {
+  display: flex; align-items: center; gap: 8px; width: 320px;
+  background: var(--sheet); border: 1px solid var(--stone-300); border-radius: var(--r-md);
+  padding: 8px 12px; color: var(--ink-3); flex-shrink: 0; white-space: nowrap;
+}
+.search kbd { margin-left: auto; font: 500 11px var(--font-ui); border: 1px solid var(--stone-300); border-radius: 4px; padding: 1px 5px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--stone-300); background: var(--sheet);
+  border-radius: var(--r-md); padding: 8px 14px; font-weight: 600; font-size: 14px;
+  white-space: nowrap;
+}
+.btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.btn.primary { background: var(--navy); border-color: var(--navy); color: #FFF; }
+.btn.gilt { background: var(--gilt-400); border-color: var(--gilt-400); color: var(--night-900); }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--ink-2); }
+.btn.sage { background: var(--sage-100); border-color: transparent; color: var(--sage-700); }
+.btn.sm { padding: 5px 10px; font-size: 13px; }
+.icon-btn {
+  width: 34px; height: 34px; display: grid; place-items: center;
+  border: 1px solid transparent; border-radius: var(--r-sm); background: transparent; color: var(--ink-2);
+}
+.icon-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.7; }
+
+/* ---------- Text roles ---------- */
+.read { font-family: var(--font-read); }
+.ref { font: 600 13px var(--font-ui); color: var(--gilt-600); }
+.muted { color: var(--ink-3); }
+.small { font-size: 13px; }
+h2.page { font: 600 36px/1.1 var(--font-display); margin: 0; color: var(--navy); }
+h3.sec { font: 600 15px var(--font-ui); margin: 0 0 12px; }
+
+/* ---------- Surfaces ---------- */
+.sheet { background: var(--sheet); border-radius: var(--r-lg); box-shadow: var(--shadow-sheet); }
+.panel { background: var(--sheet); border: 1px solid var(--stone-200); border-radius: var(--r-md); }
+
+/* Scripture is always shown on a gilt-edged surface with its translation */
+.scripture {
+  border-left: 3px solid var(--gilt-400);
+  background: linear-gradient(90deg, var(--gilt-50), rgba(251, 243, 220, 0));
+  padding: 12px 16px; border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-family: var(--font-read); font-size: 16px; line-height: 1.65;
+}
+.scripture .who { display: flex; gap: 8px; align-items: baseline; margin-bottom: 4px; }
+.scripture .who .ref { font-size: 12.5px; }
+.tr { font: 600 10.5px var(--font-ui); color: var(--ink-3); border: 1px solid var(--stone-300); border-radius: 4px; padding: 0 5px; }
+sup.v { font: 600 10px var(--font-ui); color: var(--gilt-600); margin-right: 3px; }
+
+/* AI output is always on a sage surface with a "SELAH suggests" label and evidence tags */
+.ai {
+  background: var(--sage-100); border-radius: var(--r-md); padding: 12px 14px;
+  border: 1px solid var(--ai-border);
+}
+.ai .label { display: flex; align-items: center; gap: 6px; font: 600 12.5px var(--font-ui); color: var(--sage-700); margin-bottom: 6px; }
+.ai .label svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.ev {
+  display: inline-block; font: 600 10.5px var(--font-ui); border-radius: 999px; padding: 1px 8px;
+  background: #FFF; color: var(--sage-700); border: 1px solid var(--ai-border); margin-right: 4px;
+}
+.ev.text { color: var(--gilt-600); border-color: #E8D6A4; }
+.ev.interp { color: #5B4A8B; border-color: #D8D0EE; }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font: 600 12px var(--font-ui); padding: 3px 9px; border-radius: 999px;
+  background: var(--stone-200); color: var(--ink-2);
+  align-self: center; white-space: nowrap;
+}
+.chip.ok { background: #E3F1E8; color: var(--ok); }
+.chip.warn { background: #F8ECD9; color: var(--warn); }
+.chip.risk { background: #F6E2DD; color: var(--risk); }
+.chip.dark { background: var(--night-800); color: var(--gilt-200); }
+
+.refchip {
+  font: 600 12.5px var(--font-ui); color: var(--gilt-600);
+  background: var(--gilt-50); border-bottom: 1px solid var(--gilt-400);
+  padding: 0 3px; border-radius: 3px;
+}
+
+/* Tabs */
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--stone-200); padding: 0 12px; }
+.tabs a { white-space: nowrap; padding: 11px 8px; font-weight: 600; font-size: 13.5px; color: var(--ink-3); text-decoration: none; border-bottom: 2px solid transparent; }
+.tabs a.on { color: var(--ink); border-color: var(--ink); }
+
+/* Lists */
+.row { display: flex; align-items: center; gap: 12px; }
+.list-item { padding: 12px 14px; border-bottom: 1px solid var(--stone-200); }
+.list-item:last-child { border-bottom: 0; }
+
+/* Ribbon marker for current position */
+.ribbon-mark { position: relative; }
+.ribbon-mark::before {
+  content: ""; position: absolute; left: -14px; top: 6px; width: 6px; height: 22px;
+  background: var(--ribbon); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+}
+
+/* Inputs */
+.field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+.field .hint { font-size: 12.5px; color: var(--ink-3); margin-top: 5px; }
+.input {
+  width: 100%; background: var(--sheet); border: 1px solid var(--stone-300); border-radius: var(--r-md);
+  padding: 10px 12px; font: 15px var(--font-ui); color: var(--ink);
+}
+.seg { display: inline-flex; background: var(--stone-200); border-radius: var(--r-md); padding: 3px; gap: 2px; }
+.seg span { padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 13px; color: var(--ink-2); }
+.seg span.on { background: var(--sheet); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+/* Progress */
+.bar { height: 6px; background: var(--stone-200); border-radius: 999px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--gilt-500); border-radius: 999px; }
+
+/* Device frames for mobile mockups */
+.phone {
+  width: 390px; height: 844px; border-radius: 48px; background: #05070D; padding: 12px;
+  box-shadow: 0 30px 60px rgba(17,23,39,.25);
+}
+.phone .screen { width: 100%; height: 100%; border-radius: 38px; overflow: hidden; position: relative; background: var(--stone-100); }
+.statusbar { height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; font: 600 14px var(--font-ui); }
+.tabbar {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 82px; background: var(--sheet);
+  border-top: 1px solid var(--stone-200); display: grid; grid-template-columns: repeat(5, 1fr); padding: 8px 6px 24px;
+}
+.tabbar a { display: flex; flex-direction: column; align-items: center; gap: 3px; font: 600 11px var(--font-ui); color: var(--ink-3); text-decoration: none; }
+.tabbar a svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.7; }
+.tabbar a.on { color: var(--ink); }
+
+/* Screen caption used on the mockup pages */
+.caption { font: 13px var(--font-ui); color: var(--ink-3); max-width: 70ch; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

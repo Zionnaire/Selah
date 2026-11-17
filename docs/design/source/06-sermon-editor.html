@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Sermon editor</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+body { height: 100vh; overflow: hidden; }
+.ebar { height: 58px; display:flex; align-items:center; gap: 12px; padding: 0 18px; background: var(--sheet); border-bottom:1px solid var(--stone-200); }
+.ebar .crumb { display:flex; align-items:center; gap:4px; color: var(--ink-3); font-weight:600; font-size:13.5px; text-decoration:none; }
+.ebar .title { font: 500 17px var(--font-read); }
+.ebar .spacer { flex:1; }
+.ed { display:grid; grid-template-columns: 268px 1fr 372px; height: calc(100vh - 58px); }
+.outline { background: var(--stone-100); border-right:1px solid var(--stone-200); padding: 18px 14px 18px 22px; overflow:auto; display:flex; flex-direction:column; }
+.outline h3 { font: 600 13px var(--font-ui); color: var(--ink-3); margin: 0 6px 10px; }
+.sec { display:flex; align-items:flex-start; gap:8px; padding: 9px 8px; border-radius: var(--r-sm); }
+.sec .g { color: var(--stone-300); margin-top:2px; }
+.sec .g svg { stroke-width: 3; width:16px; height:16px; }
+.sec .nm { font-weight:600; font-size:14px; }
+.sec .tm { font-size:12px; color: var(--ink-3); margin-top:2px; display:flex; gap:6px; align-items:center; }
+.sec .mini { width: 70px; height: 4px; background: var(--stone-200); border-radius:4px; overflow:hidden; display:inline-block; }
+.sec .mini i { display:block; height:100%; background: var(--gilt-500); }
+.sec.on { background: var(--sheet); box-shadow: var(--shadow-sheet); }
+.sec.sub { padding-left: 30px; }
+.sec.sub .nm { font-weight:500; color: var(--ink-2); }
+.total { margin-top:auto; border-top:1px solid var(--stone-200); padding: 14px 8px 0; font-size:13px; }
+.total b { font-size: 15px; }
+.canvas { overflow:auto; position:relative; background: #F7F6F2; }
+.paper { max-width: 720px; margin: 28px auto 140px; background: var(--sheet); border-radius: 6px; box-shadow: var(--shadow-sheet); padding: 46px 64px 60px; }
+.paper .h1 { font: 500 36px/1.15 var(--font-read); margin: 0; }
+.paper .meta { display:flex; gap: 8px; margin: 10px 0 30px; }
+.paper h2 { font: 600 22px/1.3 var(--font-read); margin: 30px 0 12px; }
+.paper p { font: 400 18px/1.8 var(--font-read); margin: 0 0 16px; }
+.blk { margin: 0 0 18px; position:relative; }
+.blk .tag { position:absolute; left:-56px; top:2px; font: 600 10.5px var(--font-ui); color: var(--ink-3); width:44px; text-align:right; }
+.cue { background: #F1F2F6; border-radius: var(--r-sm); padding: 10px 14px; font: italic 400 16px/1.6 var(--font-read); color: var(--night-700); display:flex; gap:10px; }
+.cue svg { color: var(--night-500); margin-top:3px; }
+.illus { border:1px solid var(--stone-200); border-radius: var(--r-md); padding: 12px 16px; }
+.illus .t { font: 600 14px var(--font-ui); margin-bottom: 4px; display:flex; justify-content:space-between; }
+.illus p { font-size: 16.5px; margin:0; }
+.pending .acts { display:flex; gap: 6px; margin-top: 10px; }
+.pending p { font: 400 16.5px/1.7 var(--font-read); margin: 0; }
+.toolbar { position:absolute; left:50%; transform:translateX(-50%); bottom: 22px; display:flex; align-items:center; gap: 2px; background: var(--sheet); border:1px solid var(--stone-200); border-radius: 14px; padding: 6px; box-shadow: 0 12px 30px rgba(17,23,39,.12); }
+.toolbar .div { width:1px; height: 22px; background: var(--stone-200); margin: 0 6px; }
+.toolbar .btn { border-color: transparent; background: transparent; padding: 7px 9px; font-size: 13px; }
+.right { background: var(--sheet); border-left:1px solid var(--stone-200); display:flex; flex-direction:column; min-height:0; }
+.right .body { overflow:auto; padding: 16px 18px; }
+.par { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.par .scripture { font-size: 14.5px; padding: 10px 12px; }
+.saved { border:1px solid var(--stone-200); border-radius: var(--r-md); padding: 10px 12px; margin-bottom: 8px; display:flex; gap: 10px; }
+.saved .g { color: var(--stone-300); }
+.saved .g svg { stroke-width:3; }
+</style>
+</head>
+<body class="">
+
+<header class="ebar">
+  <a class="crumb" href="04-sermon-studio-home.html"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Sermon Studio</a>
+  <span class="title">The Power of a Transformed Mind</span>
+  <span class="chip warn">Drafting</span>
+  <div class="spacer"></div>
+  <span class="sync small muted"><span class="dot"></span>Saved on this device and synced</span>
+  <button class="icon-btn" title="Version history"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2"/></svg></button>
+  <button class="btn ghost"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>Preview</button>
+  <a class="btn" href="07-sermon-review.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg>Review</a>
+  <a class="btn gilt" href="08-pulpit-prepare.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Prepare for pulpit</a>
+</header>
+<div class="ed">
+  <aside class="outline" aria-label="Sermon outline">
+    <h3>Outline</h3>
+    <div class="sec"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">Introduction</div><div class="tm"><span class="mini"><i style="width:80%"></i></span>4 of 5 min</div></div></div><div class="sec on ribbon-mark"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">1. A living sacrifice</div><div class="tm"><span class="mini"><i style="width:90%"></i></span>9 of 10 min</div></div></div><div class="sec sub"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">Not a dead offering</div></div></div><div class="sec sub"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">Monday-morning worship</div></div></div><div class="sec"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">2. Rejecting conformity</div><div class="tm"><span class="mini"><i style="width:60%"></i></span>6 of 10 min</div></div></div><div class="sec"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">3. Renewing the mind</div><div class="tm"><span class="mini"><i style="width:20%"></i></span>2 of 10 min</div></div></div><div class="sec"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">Conclusion</div><div class="tm"><span class="mini"><i style="width:0%"></i></span>Not started</div></div></div><div class="sec"><span class="g"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="nm">Response and prayer</div><div class="tm"><span class="mini"><i style="width:0%"></i></span>Not started</div></div></div>
+    <button class="btn ghost sm" style="margin-top:6px;justify-content:flex-start"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Add section</button>
+    <div class="total"><b>21</b> of 40 minutes written<div class="bar" style="margin-top:8px"><i style="width:52%"></i></div><div class="muted" style="margin-top:6px">At your pace of about 130 words a minute</div></div>
+  </aside>
+
+  <section class="canvas">
+    <article class="paper">
+      <h1 class="h1">The Power of a Transformed Mind</h1>
+      <div class="meta"><span class="ref">Romans 12:1–2</span><span class="chip">Expository</span><span class="chip">Sunday 22 November</span></div>
+
+      <h2>1. A living sacrifice</h2>
+      <p>Paul has spent eleven chapters showing us the mercy of God. Now he asks for a response, and the response is not a ritual. It is a life.</p>
+
+      <div class="blk"><span class="tag">Scripture</span>
+        <div class="scripture"><div class="who"><span class="ref">Romans 12:1</span><span class="tr">KJV</span><span class="small muted" style="margin-left:auto;font-family:var(--font-ui)">Full text in pulpit</span></div>I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.</div>
+      </div>
+
+      <p>In the Old Testament a sacrifice died on the altar. Paul asks for something harder: an offering that keeps living. It gets up on Monday, goes to the market or the office, and is still given to God.</p>
+
+      <div class="blk"><span class="tag">Pulpit cue</span>
+        <div class="cue"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>Pause. Ask: what did you bring to God this week, apart from Sunday?</div>
+      </div>
+
+      <div class="blk"><span class="tag">Story</span>
+        <div class="illus"><div class="t">The trader’s first sale <span class="small muted">Your illustration library</span></div><p>A trader in Wuse Market told me she prays over her first sale every morning. “The day belongs to God before it belongs to my customers.”</p></div>
+      </div>
+
+      <div class="blk pending"><span class="tag">SELAH</span>
+        <div class="ai"><div class="label"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>SELAH suggests an application. Not part of your sermon until you accept it.</div>
+          <p>For young workers: offer your working hours to God. Arrive on time, refuse the bribe, and do honest work when no one is checking.</p>
+          <div style="margin-top:8px"><span class="ev text">Based on Romans 12:1</span><span class="refchip">Colossians 3:23</span></div>
+          <div class="acts"><button class="btn sm primary">Accept</button><button class="btn sm">Edit first</button><button class="btn sm ghost">Dismiss</button></div>
+        </div>
+      </div>
+
+      <h2>2. Rejecting conformity</h2>
+      <p>The world presses its shape onto us every day. Paul’s word is a command and a warning: do not let it mould you.</p>
+    </article>
+
+    <div class="toolbar" role="toolbar" aria-label="Formatting">
+      <button class="icon-btn" title="Undo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3"/></svg></button><button class="icon-btn" title="Redo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14l5-5-5-5M20 9H10a6 6 0 0 0 0 12h3"/></svg></button>
+      <span class="div"></span>
+      <button class="btn">Paragraph <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="icon-btn" title="Bold"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7zM7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg></button><button class="icon-btn" title="Italic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5h8M6 19h8M14 5l-4 14"/></svg></button><button class="icon-btn" title="List"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></button>
+      <span class="div"></span>
+      <button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Scripture</button><button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h4v4c0 3-1 5-4 6M15 7h4v4c0 3-1 5-4 6"/></svg>Story</button><button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 6.5M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>Application</button><button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>Pulpit cue</button>
+    </div>
+  </section>
+
+  <aside class="right" aria-label="Preparation tools">
+    <div class="tabs"><a class="on" href="#">Bible</a><a href="#">Research</a><a href="#">Stories</a><a href="#">Check <span class="chip warn" style="padding:0 6px">3</span></a><a href="#">Ask SELAH</a></div>
+    <div class="body">
+      <div class="row" style="justify-content:space-between;margin-bottom:10px"><strong class="read" style="font-size:18px">Romans 12:1–2</strong><button class="btn sm">KJV and WEB <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
+      <div class="par">
+        <div class="scripture"><div class="who"><span class="tr">KJV</span></div><sup class="v">1</sup>I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.</div>
+        <div class="scripture"><div class="who"><span class="tr">WEB</span></div><sup class="v">1</sup>Therefore I urge you, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your spiritual service.</div>
+      </div>
+      <p class="small muted" style="margin:10px 0 18px">Select verses to insert them. Your sermon stores the reference, so you can change the translation later.</p>
+      <h3 class="sec">From your research</h3>
+      <div class="saved"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="ref">Romans 11:36</div><div class="small muted">Saved in Understanding Romans 12:1–2</div></div></div>
+      <div class="saved"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div class="ref">Ephesians 4:23</div><div class="small muted">Cross-reference</div></div></div>
+      <div class="saved"><span class="g"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/></svg></span><div><div style="font-weight:600;font-size:13.5px">“Mercy first, response second.”</div><div class="small muted">Your note</div></div></div>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+/* Sync: the rail line, the Settings card, the offer and the review screen. Semantic tokens only. */
+
+.sync-dot.is-waiting,
+.sync-dot.is-offline,
+.sync-dot.is-syncing {
+  background: #f59e0b;
+}
+.sync-dot.is-attention,
+.sync-dot.is-problem {
+  background: #ef4444;
+}
+.sync-dot.is-syncing {
+  animation: sync-pulse 1.4s ease-in-out infinite;
+}
+@keyframes sync-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.spin {
+  animation: sync-spin 1s linear infinite;
+}
+@keyframes sync-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spin,
+  .sync-dot.is-syncing {
+    animation: none;
+  }
+}
+
+/* ---------- Settings card ---------- */
+.sync-status {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-2, var(--surface));
+}
+.sync-status > div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.sync-status.is-synced svg {
+  color: var(--ok);
+}
+.sync-status.is-attention svg,
+.sync-status.is-problem svg {
+  color: var(--danger, #b42318);
+}
+.sync-status.is-waiting svg,
+.sync-status.is-offline svg,
+.sync-status.is-syncing svg {
+  color: var(--warn, #b45309);
+}
+
+.sync-confirm,
+.sync-attention,
+.sync-notices {
+  margin-top: 14px;
+}
+.sync-confirm {
+  padding: 12px 14px;
+  border: 1px solid var(--danger, #b42318);
+  border-radius: var(--r-md);
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+.sync-attention ul,
+.sync-notices ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.sync-attention li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.sync-attention li > div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.sync-notices li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: var(--text-sm);
+  color: var(--text-2);
+}
+
+.sync-counts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+.sync-counts li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: var(--text-sm);
+}
+
+.sync-pref {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.sync-pref > div {
+  display: grid;
+  gap: 2px;
+}
+
+/* ---------- Offer dialog ---------- */
+.sync-offer {
+  width: min(480px, calc(100% - 32px));
+}
+.offer-list {
+  margin: 8px 0 12px;
+  padding-left: 18px;
+}
+.offer-choices {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+.offer-choices .btn {
+  justify-content: center;
+}
+
+/* ---------- Review ---------- */
+.review-part {
+  display: grid;
+  gap: 12px;
+}
+.review-sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.review-label {
+  font-size: var(--text-xs, 12px);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  margin-bottom: 4px;
+}
+.review-text {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  line-height: 1.55;
+}
+.review-text mark {
+  background: color-mix(in srgb, var(--gold) 35%, transparent);
+  color: inherit;
+  border-radius: 2px;
+}
+.review-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.review-choice label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  cursor: pointer;
+}
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+@media (max-width: 720px) {
+  .review-sides {
+    grid-template-columns: 1fr;
+  }
+  .sync-status {
+    grid-template-columns: auto 1fr;
+  }
+  .sync-status .btn {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: New sermon</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.backdrop { position:fixed; inset:0; background: rgba(11,15,26,.55); display:grid; place-items:center; }
+.dialog { width: 780px; background: var(--sheet); border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.35); overflow:hidden; }
+.dialog .top { padding: 24px 30px 8px; display:flex; justify-content:space-between; }
+.dialog h2 { font: 600 32px var(--font-display); margin:0; }
+.form { padding: 12px 30px 8px; display:grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
+.full { grid-column: 1 / -1; }
+.parsed { margin-top:8px; }
+.tmpl { display:grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.tmpl div { border:1px solid var(--stone-300); border-radius: var(--r-md); padding: 10px 12px; font-size: 13px; }
+.tmpl div b { display:block; font-size:13.5px; margin-bottom:3px; }
+.tmpl div.on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.foot { display:flex; align-items:center; justify-content:space-between; padding: 18px 30px 24px; border-top:1px solid var(--stone-200); margin-top: 14px; }
+.input.big { font: 400 20px var(--font-read); }
+</style>
+</head>
+<body class="">
+
+<div class="shell" style="filter:blur(1px)">
+<aside class="rail" aria-label="Main navigation">
+  <div class="brand">
+    <img class="mark" src="../brand/selah-symbol-gold.svg" alt="">
+    <img class="word" src="../brand/selah-wordmark-ivory.svg" alt="SELAH">
+  </div>
+  <nav><a href="01-overview.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a><a href="02-bible-reader.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a href="03-study-workspace.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study & Research</a><a href="04-sermon-studio-home.html" class="on"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermon Studio</a><a href="08-pulpit-prepare.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Pulpit</a><a href="#" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>My Library</a>
+    <div class="sep"></div>
+    <a href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"/></svg>Settings</a>
+  </nav>
+  <div class="foot">
+    <div class="sync"><span class="dot"></span>Synced 2 minutes ago</div>
+    <div class="me"><span class="avatar">DA</span><div><div style="font-weight:600">Pastor Daniel A.</div><div class="small" style="color:#8C93A3">Grace Assembly, Abuja</div></div></div>
+  </div>
+</aside><main class="main"><div class="topbar"><h1>Sermon Studio</h1></div></main></div>
+<div class="backdrop">
+  <div class="dialog" role="dialog" aria-labelledby="ns">
+    <div class="top"><div><h2 id="ns">New sermon</h2><div class="muted small" style="margin-top:4px">Only a title or a passage is needed to begin. You can fill in the rest later.</div></div><button class="icon-btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="form">
+      <div class="field full"><label>Title</label><input class="input big" value="The Power of a Transformed Mind"></div>
+      <div class="field"><label>Main passage</label><input class="input" value="rom 12 1-2">
+        <div class="parsed scripture" style="font-size:14px;padding:8px 12px"><div class="who"><span class="ref">Romans 12:1–2</span><span class="tr">KJV</span></div>I beseech you therefore, brethren, by the mercies of God…</div></div>
+      <div class="field"><label>Sermon type</label><select class="input"><option>Expository</option></select>
+        <div class="field" style="margin-top:16px"><label>Occasion</label><input class="input" value="Sunday service"></div></div>
+      <div class="field full"><label>Structure</label>
+        <div class="tmpl">
+          <div class="on"><b>Three points</b>Introduction, three points, conclusion</div>
+          <div><b>One big idea</b>A single truth developed and applied</div>
+          <div><b>Verse by verse</b>Sections follow the passage</div>
+          <div><b>Blank</b>Start with an empty page</div>
+        </div><div class="hint">Structures only create empty sections. You can change them at any time.</div></div>
+      <div class="field"><label>Target length</label><div class="row"><input class="input" value="40" style="width:90px"><span class="muted">minutes</span></div></div>
+      <div class="field"><label>Preaching date</label><input class="input" value="Sunday 22 November 2026"></div>
+      <div class="field"><label>Start from</label><div class="seg"><span>Blank</span><span>Passage</span><span class="on">Saved study</span><span>Outline</span></div>
+        <div class="hint">Understanding Romans 12:1–2: its passages, notes and sources appear in the Research tab.</div></div>
+      <div class="field"><label>Language</label><select class="input"><option>English</option></select></div>
+    </div>
+    <div class="foot"><span class="small muted">SELAH won’t write anything for you unless you ask it to.</span><div class="row"><button class="btn ghost">Cancel</button><a class="btn primary" href="06-sermon-editor.html">Create sermon</a></div></div>
+  </div>
+</div>
+</body>
+</html>

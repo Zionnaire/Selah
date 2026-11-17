@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Word study</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.pad { padding: 28px 40px 40px; }
+.lead { color: var(--ink-3); margin: 6px 0 22px; max-width: 70ch; }
+.cardx { background: var(--sheet); border:1px solid var(--stone-200); border-radius: var(--r-lg); }
+.th { font: 600 13px var(--font-ui); color: var(--ink-3); }
+.vt { font: 400 17px/1.75 var(--font-read); }
+.vt sup { font: 600 10.5px var(--font-ui); color: var(--gilt-600); margin-right: 3px; }
+.grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sect { font: 600 22px var(--font-display); color: var(--navy); margin: 26px 0 10px; }
+.kv { display:grid; grid-template-columns: 150px 1fr; gap: 8px 16px; font-size: 14px; }
+.kv dt { color: var(--ink-3); } .kv dd { margin:0; }
+
+.wsx { display:grid; grid-template-columns: 220px 1fr 360px; height: calc(100vh - 60px); }
+.guide { border-right:1px solid var(--stone-200); padding: 18px 14px 18px 24px; overflow:auto; }
+.guide a { display:block; padding: 8px 10px; border-radius: var(--r-sm); color: var(--ink-2); text-decoration:none; font-size:14px; }
+.guide a.on { background: var(--sheet); color: var(--ink); font-weight:600; box-shadow: var(--shadow-sheet); }
+.guide .grp { font: 600 12px var(--font-ui); color: var(--ink-3); margin: 14px 10px 6px; }
+.doc { overflow:auto; padding: 24px 32px 50px; }
+.doc .sheet { max-width: 780px; margin: 0 auto; padding: 30px 40px; }
+.doc h2 { font: 600 34px/1.15 var(--font-display); color: var(--navy); margin: 4px 0 4px; }
+.doc p { font: 400 16px/1.7 var(--font-read); }
+.asst { background: var(--sheet); border-left:1px solid var(--stone-200); padding: 16px 18px; overflow:auto; }
+.claim { font: 400 15px/1.6 var(--font-read); margin: 0 0 10px; }
+.tl { display:grid; grid-template-columns: 110px 1fr; gap: 0 14px; }
+.tl div { padding: 10px 0; border-top: 1px solid var(--stone-200); font-size: 14px; }
+</style>
+</head>
+<body class="">
+<div class="shell">
+<aside class="rail" aria-label="Main navigation">
+  <div class="brand">
+    <img class="mark" src="../brand/selah-symbol-gold.svg" alt="">
+    <img class="word" src="../brand/selah-wordmark-ivory.svg" alt="SELAH">
+  </div>
+  <nav><a href="01-overview.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a><a href="02-bible-reader.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a href="03-study-workspace.html" class="on"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study & Research</a><a href="04-sermon-studio-home.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermon Studio</a><a href="08-pulpit-prepare.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Pulpit</a><a href="#" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>My Library</a>
+    <div class="sep"></div>
+    <a href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"/></svg>Settings</a>
+  </nav>
+  <div class="foot">
+    <div class="sync"><span class="dot"></span>Synced 2 minutes ago</div>
+    <div class="me"><span class="avatar">DA</span><div><div style="font-weight:600">Pastor Daniel A.</div><div class="small" style="color:#8C93A3">Grace Assembly, Abuja</div></div></div>
+  </div>
+</aside><main class="main">
+<div class="topbar"><a class="icon-btn" href="20-study-home.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a><h1>metamorphoō, “transformed”</h1><span class="chip">Word study</span><div class="spacer"></div><span class="sync small muted"><span class="dot"></span>Saved</span><button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 8l5-5 5 5M5 14v6h14v-6"/></svg>Export</button><button class="btn primary"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Add to sermon</button></div>
+<div class="wsx"><nav class="guide"><div class="grp">Word</div><a class="" href="#">Form and parsing</a><a class="on ribbon-mark" href="#">Meaning here</a><a class="" href="#">Every occurrence</a><a class="" href="#">Related words</a><div class="grp">Yours</div><a class="" href="#">Notes</a></nav><div class="doc"><article class="sheet"><div class="ref">Romans 12:2, “transformed”</div>
+<div class="row" style="align-items:flex-end;gap:16px;margin-top:6px"><span style="font:400 46px var(--font-read);color:var(--navy)">μεταμορφόω</span><span style="font:600 20px var(--font-ui)">metamorphoō</span><button class="btn sm"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Listen</button></div>
+<dl class="kv" style="margin-top:18px"><dt>Form in this verse</dt><dd>μεταμορφοῦσθε: verb, present, passive, imperative, second person plural</dd>
+<dt>Strong’s number</dt><dd>G3339</dd><dt>Gloss</dt><dd>to transform, change in form</dd>
+<dt>Semantic range</dt><dd>to change into another form; to be transfigured; to be changed inwardly</dd>
+<dt>Occurrences</dt><dd>4 in the New Testament</dd></dl>
+<div class="sect" style="font-size:20px">Meaning in this verse</div>
+<p>Here the word describes an inner change in believers, set against being “conformed” to this world. Context determines the meaning: the outward “transfiguration” sense in the Gospels is not imported into Romans 12:2.</p>
+<div class="sect" style="font-size:20px">Every occurrence</div><div class="cardx"><div class="list-item"><span class="ref">Matthew 17:2</span><p class="vt" style="margin:2px 0 0;font-size:15.5px">And was transfigured before them: and his face did shine as the sun…</p></div><div class="list-item"><span class="ref">Mark 9:2</span><p class="vt" style="margin:2px 0 0;font-size:15.5px">…and he was transfigured before them.</p></div><div class="list-item"><span class="ref">Romans 12:2</span><p class="vt" style="margin:2px 0 0;font-size:15.5px">…but be ye transformed by the renewing of your mind…</p></div><div class="list-item"><span class="ref">2 Corinthians 3:18</span><p class="vt" style="margin:2px 0 0;font-size:15.5px">…are changed into the same image from glory to glory…</p></div></div>
+<p class="small muted" style="font-family:var(--font-ui);margin-top:12px">Lexical data: STEPBible (Tyndale House), CC BY 4.0. Licence to be confirmed before release.</p></article></div><aside class="asst"><b>Related words</b>
+<div class="cardx" style="padding:12px 14px;margin-top:10px"><b>syschēmatizō</b> <span class="muted small">συσχηματίζω</span><div class="small muted">“conformed”, the contrast in the same verse. Also 1 Peter 1:14.</div></div>
+<div class="cardx" style="padding:12px 14px;margin-top:8px"><b>anakainōsis</b> <span class="muted small">ἀνακαίνωσις</span><div class="small muted">“renewing”, also Titus 3:5.</div></div>
+<div class="ai" style="margin-top:16px"><div class="label"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>SELAH suggests</div><p class="claim">Many teachers note that the present tense and passive voice point to an ongoing change worked in believers rather than a single act of effort. <span class="ev interp">Interpretation</span></p></div>
+<div class="cardx" style="padding:12px 14px;margin-top:16px;border-color:#F0DDB7;background:#FCF7EA"><b class="small">A caution SELAH follows</b><p class="small" style="margin:4px 0 0">A word’s whole range of meaning doesn’t apply in every verse. Read the definition through the sentence it sits in.</p></div></aside></div>
+</main></div>
+</body>
+</html>

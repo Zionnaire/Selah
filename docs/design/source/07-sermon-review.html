@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Sermon review</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.wrap { display:grid; grid-template-columns: 1fr 320px; gap: 26px; padding: 28px 44px; max-width: 1200px; }
+.ebar { height: 58px; display:flex; align-items:center; gap: 12px; padding: 0 28px; background: var(--sheet); border-bottom:1px solid var(--stone-200); }
+.check { background: var(--sheet); border:1px solid var(--stone-200); border-radius: var(--r-lg); }
+.ci { display:grid; grid-template-columns: 30px 1fr auto; gap: 12px; padding: 16px 20px; border-bottom:1px solid var(--stone-200); }
+.ci:last-child { border-bottom:0; }
+.ci .st { width: 26px; height: 26px; border-radius: 50%; display:grid; place-items:center; }
+.ci .st svg { width:15px; height:15px; stroke-width:2.2; }
+.st.ok { background:#E3F1E8; color: var(--ok); }
+.st.warn { background:#F8ECD9; color: var(--warn); }
+.st.info { background: var(--stone-200); color: var(--ink-2); }
+.ci .t { font-weight: 600; }
+.ci .d { color: var(--ink-2); font-size: 14px; margin-top: 3px; max-width: 64ch; }
+.ci .find { margin-top: 10px; }
+.side .panel { padding: 18px; margin-bottom: 14px; }
+.side dt { font-size: 12.5px; color: var(--ink-3); }
+.side dd { margin: 2px 0 12px; font-weight: 600; }
+</style>
+</head>
+<body class="">
+
+<header class="ebar">
+  <a class="btn ghost" href="06-sermon-editor.html"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Back to editor</a>
+  <span class="read" style="font-size:17px">The Power of a Transformed Mind</span>
+  <span style="flex:1"></span>
+  <button class="btn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/></svg>Run checks again</button>
+  <a class="btn gilt" href="08-pulpit-prepare.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Prepare for pulpit</a>
+</header>
+<div class="wrap">
+  <section>
+    <h2 class="page">Before you preach</h2>
+    <p class="muted" style="margin:6px 0 20px;max-width:64ch">These checks point out things worth a second look. They don’t approve the sermon; the message remains yours.</p>
+    <div class="check"><div class="ci"><span class="st ok"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span><div><div class="t">Main passage</div><div class="d">Romans 12:1–2 is quoted in full and every point refers back to it.</div></div><div></div></div><div class="ci"><span class="st warn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 16H3zM12 10v4M12 17h.01"/></svg></span><div><div class="t">Scripture quotations</div><div class="d">12 references are valid. One quotation you typed differs from the KJV.</div><div class=find><div class="scripture" style="font-size:14.5px;padding:10px 12px"><div class="who"><span class="ref">Romans 12:2</span><span class="tr">KJV</span><span class="small muted" style="font-family:var(--font-ui)">in your Introduction</span></div>Your text: “be ye transformed by the <b>renewal</b> of your mind”<br>KJV: “be ye transformed by the <b>renewing</b> of your mind”</div><div class="row" style="gap:6px;margin-top:8px"><button class="btn sm">Use KJV wording</button><button class="btn sm ghost">Go to text</button></div></div></div><div></div></div><div class="ci"><span class="st warn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 16H3zM12 10v4M12 17h.01"/></svg></span><div><div class="t">Context</div><div class="d">One point may read the verse differently from its context.</div><div class=find><div class="ai"><div class="label"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>SELAH suggests a second look</div><p class="claim" style="font:400 15px/1.6 var(--font-read);margin:0">Point 3 explains “that ye may prove” as God testing you with trials. In this verse, “prove” means to test and recognise God’s will as good, not to undergo trials. <span class="ev text">Textual observation</span></p><div class="row" style="gap:6px;margin-top:8px"><button class="btn sm">Go to point 3</button><button class="btn sm ghost">Dismiss</button></div></div></div></div><div></div></div><div class="ci"><span class="st warn"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2"/></svg></span><div><div class="t">Timing</div><div class="d">About 21 of 40 minutes are written. Point 3 has 2 minutes of its 10-minute budget, and the conclusion is empty.</div></div><div></div></div><div class="ci"><span class="st info"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 11v6M12 7.5h.01"/></svg></span><div><div class="t">Stories and illustrations</div><div class="d">“The trader’s first sale” was also used on 4 October in Faithful in Little.</div></div><div></div></div><div class="ci"><span class="st ok"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span><div><div class="t">Application</div><div class="d">Each written point ends with an application for the congregation.</div></div><div></div></div><div class="ci"><span class="st info"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></span><div><div class="t">Waiting for you</div><div class="d">One SELAH suggestion in point 1 has not been accepted or dismissed.</div></div><div></div></div></div>
+  </section>
+  <aside class="side">
+    <div class="panel">
+      <dl style="margin:0">
+        <dt>Written</dt><dd>21 of 40 minutes</dd>
+        <dt>Scripture references</dt><dd>12, checked against KJV</dd>
+        <dt>Things to look at</dt><dd>3</dd>
+        <dt>Pulpit copy</dt><dd>Not prepared yet</dd>
+      </dl>
+    </div>
+    <p class="small muted">Reference and quotation checks run on this device without internet. Context checks by SELAH need a connection.</p>
+  </aside>
+</div>
+</body>
+</html>

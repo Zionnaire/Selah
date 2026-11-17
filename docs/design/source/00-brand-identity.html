@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Brand identity</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+body { background: var(--stone-100); }
+.bi { display:grid; grid-template-columns: 1.25fr 1fr; grid-template-rows: 1fr auto; height: 100vh; }
+.hero { background: var(--navy); display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; }
+.hero img { width: 470px; }
+.hero .verse { max-width: 54ch; text-align:center; color: #C6CCDA; font: italic 400 17px/1.7 var(--font-read); margin-top: 26px; }
+.hero .verse b { display:block; font: 600 12.5px var(--font-ui); font-style: normal; color: var(--gold); margin-top: 8px; letter-spacing: .04em; }
+.side { padding: 44px 46px; display:flex; flex-direction:column; gap: 22px; }
+.side h1 { font: 600 44px/1.05 var(--font-display); color: var(--navy); margin: 0; }
+.side .lede { font: 400 16px/1.6 var(--font-ui); color: var(--ink-2); max-width: 46ch; margin: 0; }
+.tiles { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tile { border-radius: var(--r-lg); border:1px solid var(--stone-200); background: var(--sheet); display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 10px; padding: 18px 10px; }
+.tile span { font: 500 12px var(--font-ui); color: var(--ink-3); }
+.tile.navy { background: var(--navy); border-color: var(--navy); }
+.tile.navy span { color: #AEB6C7; }
+.words { display:grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.words div { border-top: 2px solid var(--gold-dark); padding-top: 8px; font: 600 14px var(--font-ui); color: var(--navy); }
+.words div small { display:block; font-weight:400; color: var(--ink-3); font-size: 12.5px; margin-top: 2px; }
+.strip { grid-column: 1 / -1; background: var(--sheet); border-top:1px solid var(--stone-200); display:flex; align-items:center; gap: 28px; padding: 18px 46px; }
+.strip img { height: 46px; }
+.strip .note { margin-left:auto; font: 400 13px var(--font-ui); color: var(--ink-3); max-width: 46ch; }
+</style>
+</head>
+<body class="">
+
+<div class="bi">
+  <section class="hero">
+    <img src="../brand/selah-logo-primary-on-navy.svg" alt="SELAH. Study deeply. Prepare faithfully.">
+    <p class="verse">For Ezra had prepared his heart to seek the law of the LORD, and to do it, and to teach in Israel statutes and judgments.<b>Ezra 7:10 (KJV)</b></p>
+  </section>
+  <section class="side">
+    <h1>Quiet scholarship</h1>
+    <p class="lede">SELAH is a study and preaching companion for ministers. The identity is reverent and calm: navy for depth, a restrained antique gold for light, and warm ivory pages for long reading.</p>
+    <div class="tiles">
+      <div class="tile navy"><img src="../brand/selah-app-icon.svg" width="76" style="border-radius:18px"><span>App icon</span></div>
+      <div class="tile navy"><img src="../brand/selah-symbol-gold.svg" width="70"><span>Symbol on navy</span></div>
+      <div class="tile"><img src="../brand/selah-symbol-navy.svg" width="70"><span>Symbol on light</span></div>
+      <div class="tile"><img src="../brand/selah-symbol-mono-navy.svg" width="60"><span>Monochrome</span></div>
+      <div class="tile navy"><img src="../brand/selah-symbol-mono-white.svg" width="60"><span>Monochrome reversed</span></div>
+      <div class="tile"><img src="../brand/selah-symbol-navy.svg" width="24"><span>Smallest use: 24 px</span></div>
+    </div>
+    <div class="words">
+      <div>Scholarly<small>Careful, sourced</small></div>
+      <div>Reverent<small>Quiet, never loud</small></div>
+      <div>Warm<small>Ivory, not white</small></div>
+      <div>Focused<small>One thing at a time</small></div>
+    </div>
+  </section>
+  <div class="strip">
+    <img src="../brand/selah-logo-horizontal-on-light.svg" alt="">
+    <img src="../brand/selah-logo-horizontal-mono-navy.svg" alt="">
+    <p class="note">The detailed symbol shows the Bible open at Ezra 7:10. Use it at 160 px and above; below that, use the compact symbol.</p>
+  </div>
+</div>
+</body>
+</html>

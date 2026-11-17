@@ -1,0 +1,414 @@
+/* ---------- Overview ---------- */
+.hero {
+  position: relative;
+  flex-shrink: 0;
+  background: var(--navy);
+  color: #fff;
+  overflow: hidden;
+}
+/* The one light ray. It appears here, in the logo and in Pulpit Mode, nowhere else. */
+.hero .ray {
+  position: absolute;
+  top: 0;
+  left: 62%;
+  width: 2px;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(244, 224, 160, 0.9), rgba(244, 224, 160, 0));
+  box-shadow: 0 0 36px 6px rgba(212, 175, 55, 0.18);
+  pointer-events: none;
+}
+.hero .pagebar {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+.hero .searchbox {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--navy-border);
+  color: #b9bfcc;
+}
+.hero .searchbox input {
+  color: #fff;
+}
+.hero .searchbox input::placeholder {
+  color: #9ea5b5;
+}
+.hero .chip-warn {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+}
+.hero-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 8px 28px 34px;
+}
+.hero-greet {
+  color: #b9bfcc;
+  font-size: var(--text-base);
+}
+.hero-title {
+  margin-top: 4px;
+  font: 600 clamp(2rem, 4vw, 2.75rem) / 1.1 var(--font-display);
+  color: #fdfcf9;
+}
+.hero-verse {
+  max-width: 62ch;
+  margin-top: 12px;
+  min-height: 1.6em;
+  font: italic 400 1.0625rem / 1.6 var(--font-read);
+  color: #d6dae3;
+}
+.hero-ref {
+  margin-left: 4px;
+  font: 600 var(--text-sm) var(--font-ui);
+  font-style: normal;
+  color: var(--gold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.hero-ref:hover {
+  text-decoration: underline;
+}
+.next-sermon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 920px;
+  margin-top: 26px;
+  padding: 22px 24px;
+  border: 1px solid var(--navy-border);
+  border-radius: var(--r-lg);
+  background: rgba(8, 23, 47, 0.55);
+}
+.eyebrow {
+  color: var(--gold-tint);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.next-sermon h2 {
+  margin-top: 4px;
+  font: 600 1.625rem / 1.15 var(--font-display);
+}
+.hero-sub {
+  margin-top: 6px;
+  color: #b9bfcc;
+  font-size: var(--text-sm);
+}
+.next-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.overview-grid > .card:nth-child(1) {
+  grid-column: span 5;
+}
+.overview-grid > .card:nth-child(2) {
+  grid-column: span 4;
+}
+.overview-grid > .card:nth-child(3) {
+  grid-column: span 3;
+}
+.overview-grid > .card.span-all {
+  grid-column: 1 / -1;
+}
+.read-preview {
+  margin: 8px 0 14px;
+  font: 400 1.0625rem / 1.7 var(--font-read);
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.device-list {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+.device-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+}
+.quick {
+  display: grid;
+  gap: 8px;
+}
+.quick .btn {
+  justify-content: flex-start;
+}
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.notice {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  font-size: var(--text-sm);
+}
+.notice.warn {
+  background: color-mix(in srgb, var(--warn) 12%, transparent);
+  color: var(--text-2);
+}
+.field-error {
+  flex-basis: 100%;
+  color: var(--risk);
+  font-size: var(--text-sm);
+}
+:root[data-theme='dark'] .field-error {
+  color: #f87171;
+}
+
+@media (max-width: 1100px) {
+  .overview-grid > .card:nth-child(n) {
+    grid-column: span 6;
+  }
+  .overview-grid > .card.span-all {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 720px) {
+  .hero-inner {
+    padding: 4px 16px 24px;
+  }
+  .next-sermon {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 18px;
+  }
+  .overview-grid {
+    gap: 14px;
+  }
+  .overview-grid > .card:nth-child(n),
+  .overview-grid > .card.span-all {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Overview: sermons ---------- */
+.next-main {
+  flex: 1;
+  min-width: 0;
+}
+.next-sermon .next-ref {
+  margin-top: 4px;
+  color: var(--gold);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.next-sermon .next-progress {
+  max-width: 420px;
+  margin-top: 14px;
+}
+.next-sermon .next-progress p {
+  margin-top: 8px;
+  color: #b9bfcc;
+  font-size: var(--text-sm);
+}
+.next-sermon .next-actions {
+  flex-wrap: wrap;
+}
+.recent-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.recent-list li + li {
+  border-top: 1px solid var(--border);
+}
+.recent-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  text-decoration: none;
+}
+.recent-list a span {
+  display: grid;
+  gap: 2px;
+}
+.recent-list strong {
+  font: 600 1.125rem var(--font-display);
+  color: var(--heading);
+  font-variant-numeric: lining-nums;
+}
+
+/* ---------- Settings ---------- */
+.settings-page {
+  display: grid;
+  gap: 20px;
+  max-width: 760px;
+  margin: 0;
+}
+.setting-note {
+  margin-bottom: 14px;
+}
+.usage {
+  margin-bottom: 18px;
+}
+.usage-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: var(--text-sm);
+}
+.usage-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-3);
+}
+.download-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.download-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+.download-main {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.download-main .progress {
+  margin-top: 8px;
+}
+.download-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- Search results ---------- */
+.search-page {
+  max-width: 860px;
+  margin: 0;
+}
+.search-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.page-title {
+  font: 600 2rem / 1.1 var(--font-display);
+  color: var(--heading);
+  margin-bottom: 6px;
+}
+.hit-list {
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+}
+.hit-list a {
+  display: grid;
+  gap: 2px;
+  padding: 12px var(--space-5);
+  text-decoration: none;
+}
+.hit-list a:hover {
+  background: var(--surface-hover);
+}
+.hit-list li + li {
+  border-top: 1px solid var(--border);
+}
+.hit-text {
+  font: 400 1rem / 1.6 var(--font-read);
+}
+.hit-text mark {
+  padding: 0 2px;
+  border-radius: 2px;
+  background: var(--verse-select);
+  color: inherit;
+}
+
+.soon {
+  max-width: 640px;
+}
+
+/* Pictures along the right of the Overview header, fading out toward the text. */
+.hero-backdrop {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: min(62%, 900px);
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to left, #000 0%, #000 28%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 0%, #000 28%, transparent 100%);
+}
+.hero-backdrop img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Wider than the strip and held to the right, so only the devices and the sunrise show, never the lettering on the left of the picture. */
+  width: 175%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 38%;
+  opacity: 0;
+  transition: opacity 1800ms ease;
+  animation: hero-drift 26s ease-in-out infinite alternate;
+}
+.hero-backdrop img.is-on {
+  opacity: 0.8;
+}
+@keyframes hero-drift {
+  from {
+    transform: scale(1.03) translateX(0);
+  }
+  to {
+    transform: scale(1.1) translateX(-2%);
+  }
+}
+.hero .ray,
+.hero .pagebar,
+.hero-inner {
+  position: relative;
+  z-index: 1;
+}
+.hero .ray {
+  position: absolute;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop img {
+    animation: none;
+    transition: none;
+  }
+}
+@media (max-width: 720px) {
+  .hero-backdrop {
+    width: 100%;
+  }
+  .hero-backdrop img.is-on {
+    opacity: 0.32;
+  }
+}

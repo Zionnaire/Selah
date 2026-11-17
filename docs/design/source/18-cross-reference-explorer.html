@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Cross-reference explorer</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.pad { padding: 28px 40px 40px; }
+.lead { color: var(--ink-3); margin: 6px 0 22px; max-width: 70ch; }
+.cardx { background: var(--sheet); border:1px solid var(--stone-200); border-radius: var(--r-lg); }
+.th { font: 600 13px var(--font-ui); color: var(--ink-3); }
+.vt { font: 400 17px/1.75 var(--font-read); }
+.vt sup { font: 600 10.5px var(--font-ui); color: var(--gilt-600); margin-right: 3px; }
+.grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sect { font: 600 22px var(--font-display); color: var(--navy); margin: 26px 0 10px; }
+.kv { display:grid; grid-template-columns: 150px 1fr; gap: 8px 16px; font-size: 14px; }
+.kv dt { color: var(--ink-3); } .kv dd { margin:0; }
+.lg{width:22px;height:0;border-top:3px solid;display:inline-block}</style>
+</head>
+<body class="">
+<div class="shell">
+<aside class="rail" aria-label="Main navigation">
+  <div class="brand">
+    <img class="mark" src="../brand/selah-symbol-gold.svg" alt="">
+    <img class="word" src="../brand/selah-wordmark-ivory.svg" alt="SELAH">
+  </div>
+  <nav><a href="01-overview.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a><a href="02-bible-reader.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 1h13M9 7h6"/></svg>Bible</a><a href="03-study-workspace.html" class="on"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg>Study & Research</a><a href="04-sermon-studio-home.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/></svg>Sermon Studio</a><a href="08-pulpit-prepare.html" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 4H7zM12 12v8M8 20h8M12 4v4"/></svg>Pulpit</a><a href="#" class=""><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4zM15.5 5.2l3.4-.9 3.6 14.6-3.4.9z"/></svg>My Library</a>
+    <div class="sep"></div>
+    <a href="#"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"/></svg>Settings</a>
+  </nav>
+  <div class="foot">
+    <div class="sync"><span class="dot"></span>Synced 2 minutes ago</div>
+    <div class="me"><span class="avatar">DA</span><div><div style="font-weight:600">Pastor Daniel A.</div><div class="small" style="color:#8C93A3">Grace Assembly, Abuja</div></div></div>
+  </div>
+</aside><main class="main">
+<div class="topbar"><a class="icon-btn" href="20-study-home.html"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></a><h1>Cross-references</h1><span class="ref">Romans 12:1–2</span><div class="spacer"></div><div class="seg"><span class="on">Map</span><span>List</span></div></div>
+<div style="display:grid;grid-template-columns:1fr 360px;height:calc(100vh - 60px)">
+  <div style="padding:20px">
+    <svg viewBox="0 0 760 470" style="width:100%;height:100%"><line x1="380" y1="230" x2="160" y2="110" style="stroke:var(--gold-dark);stroke-width:1.5;opacity:.6"/><line x1="380" y1="230" x2="600" y2="110" style="stroke:var(--gold-dark);stroke-width:1.5;opacity:.6"/><line x1="380" y1="230" x2="150" y2="350" style="stroke:var(--ink-3);stroke-width:1.5;opacity:.6"/><line x1="380" y1="230" x2="610" y2="350" style="stroke:var(--sage-700);stroke-width:1.5;opacity:.6"/><line x1="380" y1="230" x2="380" y2="420" style="stroke:var(--ink-3);stroke-width:1.5;opacity:.6"/><line x1="380" y1="230" x2="380" y2="50" style="stroke:var(--gold-dark);stroke-width:1.5;opacity:.6"/><g><rect x="302" y="213" width="156" height="34" rx="17" style="fill:var(--navy);stroke:var(--navy);stroke-width:1.5"/><text x="380" y="235" text-anchor="middle" style="font:600 13px Inter;fill:#fff;stroke:none">Romans 12:1–2</text></g><g><rect x="82" y="93" width="156" height="34" rx="17" style="fill:var(--sheet);stroke:var(--gold-dark);stroke-width:1.5"/><text x="160" y="115" text-anchor="middle" style="font:600 13px Inter;fill:var(--ink);stroke:none">Romans 6:13</text></g><g><rect x="522" y="93" width="156" height="34" rx="17" style="fill:var(--sheet);stroke:var(--gold-dark);stroke-width:1.5"/><text x="600" y="115" text-anchor="middle" style="font:600 13px Inter;fill:var(--ink);stroke:none">1 Peter 2:5</text></g><g><rect x="72" y="333" width="156" height="34" rx="17" style="fill:var(--sheet);stroke:var(--ink-3);stroke-width:1.5"/><text x="150" y="355" text-anchor="middle" style="font:600 13px Inter;fill:var(--ink);stroke:none">Ephesians 4:23</text></g><g><rect x="532" y="333" width="156" height="34" rx="17" style="fill:var(--sheet);stroke:var(--sage-700);stroke-width:1.5"/><text x="610" y="355" text-anchor="middle" style="font:600 13px Inter;fill:var(--ink);stroke:none">2 Corinthians 3:18</text></g><g><rect x="302" y="403" width="156" height="34" rx="17" style="fill:var(--sheet);stroke:var(--ink-3);stroke-width:1.5"/><text x="380" y="425" text-anchor="middle" style="font:600 13px Inter;fill:var(--ink);stroke:none">1 John 2:15</text></g><g><rect x="302" y="33" width="156" height="34" rx="17" style="fill:var(--sheet);stroke:var(--gold-dark);stroke-width:1.5"/><text x="380" y="55" text-anchor="middle" style="font:600 13px Inter;fill:var(--ink);stroke:none">Romans 11:36</text></g></svg>
+  </div>
+  <aside style="background:var(--sheet);border-left:1px solid var(--stone-200);padding:18px 20px;overflow:auto">
+    <b>Show</b>
+    <div class="small" style="display:grid;gap:8px;margin:10px 0 18px">
+      <span class="row" style="gap:8px"><i class="lg" style="border-color:var(--gold-dark)"></i>Same call or command</span>
+      <span class="row" style="gap:8px"><i class="lg" style="border-color:var(--ink-3)"></i>Shared theme</span>
+      <span class="row" style="gap:8px"><i class="lg" style="border-color:var(--sage-700)"></i>Same Greek word</span>
+      <span class="row" style="gap:8px"><i class="lg" style="border-color:var(--stone-300)"></i>Old Testament quotations (none here)</span></div>
+    <div class="scripture" style="font-size:15px"><div class="who"><span class="ref">2 Corinthians 3:18</span><span class="tr">KJV</span></div>But we all, with open face beholding as in a glass the glory of the Lord, are changed into the same image from glory to glory, even as by the Spirit of the Lord.</div>
+    <p class="small" style="margin:10px 0">Linked because it uses the same verb as “transformed” in Romans 12:2.</p>
+    <div class="row" style="gap:6px"><button class="btn sm">Open passage</button><button class="btn sm primary"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Add to sermon</button></div>
+    <p class="small muted" style="margin-top:18px">Links come from OpenBible.info cross-references and shared-word data. The list view shows the same links for screen readers and small screens.</p>
+  </aside>
+</div></main></div>
+</body>
+</html>

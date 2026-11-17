@@ -1,0 +1,25 @@
+{
+  "built": "2026-11-17",
+  "note": "Derived and reformatted for SELAH. Changes: word rows compacted, slashes and punctuation markers removed, Hebrew words from variant manuscripts and psalm titles left out, Greek limited to the Textus Receptus words, lexicon limited to lemma, transliteration, part of speech and gloss, Hebrew definitions added from OpenScriptures.",
+  "sources": [
+    {
+      "name": "STEPBible-Data (Tyndale House, Cambridge, and STEPBible.org)",
+      "url": "https://github.com/STEPBible/STEPBible-Data",
+      "licence": "CC BY 4.0",
+      "commit": "5de0a47f35f0fc13dfe1430d104e5db8a4285f9c",
+      "used": "TAHOT, TAGNT, TBESH and TBESG, limited fields"
+    },
+    {
+      "name": "OpenScriptures Hebrew Lexicon",
+      "url": "https://github.com/openscriptures/HebrewLexicon",
+      "licence": "CC BY 4.0 (Strong's and BDB text are public domain)",
+      "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+      "used": "HebrewStrong.xml definitions"
+    }
+  ],
+  "excluded": [
+    "TBESH Meaning column (Online Bible permission required)",
+    "TBESG definitions (Abbott-Smith edition status unverified)",
+    "Tagged-Bibles/TTESV (CC BY-NC)"
+  ]
+}

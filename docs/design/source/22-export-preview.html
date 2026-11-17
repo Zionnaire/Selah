@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SELAH: Export</title>
+<link rel="stylesheet" href="selah.css">
+<style>
+.pad { padding: 28px 40px 40px; }
+.lead { color: var(--ink-3); margin: 6px 0 22px; max-width: 70ch; }
+.cardx { background: var(--sheet); border:1px solid var(--stone-200); border-radius: var(--r-lg); }
+.th { font: 600 13px var(--font-ui); color: var(--ink-3); }
+.vt { font: 400 17px/1.75 var(--font-read); }
+.vt sup { font: 600 10.5px var(--font-ui); color: var(--gilt-600); margin-right: 3px; }
+.grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sect { font: 600 22px var(--font-display); color: var(--navy); margin: 26px 0 10px; }
+.kv { display:grid; grid-template-columns: 150px 1fr; gap: 8px 16px; font-size: 14px; }
+.kv dt { color: var(--ink-3); } .kv dd { margin:0; }
+
+body{height:100vh;overflow:hidden}
+.ebar{height:58px;display:flex;align-items:center;gap:12px;padding:0 18px;background:var(--sheet);border-bottom:1px solid var(--stone-200)}
+.ebar .crumb{display:flex;align-items:center;gap:4px;color:var(--ink-3);font-weight:600;font-size:13.5px;text-decoration:none}
+.ebar .title{font:500 17px var(--font-read)}
+.obx{display:grid;grid-template-columns:1fr 320px;height:calc(100vh - 58px)}
+.ob section{overflow:auto;padding:24px 40px}
+.cent{background:var(--navy);color:#E8ECF4;border-radius:12px;padding:16px 20px;margin-bottom:14px}
+.cent .th{color:var(--gold-bg)} .cent p{font:400 18px/1.55 var(--font-read);margin:6px 0}
+.cent .small{color:#AEB6C7}
+.pt{background:var(--sheet);border:1px solid var(--stone-200);border-radius:12px;margin-bottom:10px}
+.pt.open{border-color:var(--gold-dark);box-shadow:0 0 0 1px var(--gold-dark)}
+.pth{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.pth .g{color:var(--stone-300)} .pth .g svg{stroke-width:3}
+.num{width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 12px var(--font-ui)}
+.pth b{font:600 16px var(--font-read)}
+.root{display:inline-flex;align-items:center;gap:4px;font:600 11.5px var(--font-ui);color:var(--gilt-600);background:var(--gilt-50);border-radius:999px;padding:2px 8px}
+.ptb{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 14px 48px}
+.slot{border:1px solid var(--stone-200);border-radius:8px;padding:8px 10px;font:400 14.5px/1.5 var(--font-read)}
+.slot span{display:block;font:600 11.5px var(--font-ui);color:var(--ink-3);margin-bottom:2px}
+.slot.empty{border-style:dashed;color:var(--ink-3);font-family:var(--font-ui);font-size:13px}
+.obs{background:var(--sheet);border-left:1px solid var(--stone-200);padding:18px}
+.obs .btn{justify-content:flex-start}
+
+.ex{display:grid;grid-template-columns:330px 1fr;height:calc(100vh - 58px)}
+.opts{background:var(--sheet);border-right:1px solid var(--stone-200);padding:20px;overflow:auto}
+.fmt{display:grid;gap:6px;margin-top:8px}
+.fmt label{border:1px solid var(--stone-200);border-radius:8px;padding:9px 12px;font-size:13px;color:var(--ink-3)}
+.fmt label b{display:block;color:var(--ink);font-size:14px}
+.fmt label.on{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.prev{overflow:auto;padding:30px;background:#E9E8E1}
+.paper2{width:600px;margin:0 auto;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:40px 50px;min-height:840px;position:relative}
+.ph{display:flex;align-items:center;gap:8px;font:600 11px var(--font-ui);color:var(--ink-3);border-bottom:1px solid var(--stone-200);padding-bottom:10px;margin-bottom:20px}
+.paper2 h1{font:600 34px/1.1 var(--font-display);color:var(--navy);margin:0 0 4px}
+.paper2 h2{font:600 22px var(--font-read);margin:26px 0 8px}
+.paper2 ul{font:400 19px/1.6 var(--font-read);padding-left:22px;margin:0 0 12px}
+.cue{font:italic 400 17px var(--font-read);color:var(--ink-2);background:#F1F2F6;padding:8px 12px;border-radius:6px}
+.pf{position:absolute;bottom:22px;left:50px;right:50px;font:400 10.5px var(--font-ui);color:var(--ink-3);border-top:1px solid var(--stone-200);padding-top:8px}
+</style>
+</head>
+<body class="">
+<header class="ebar"><a class="crumb" href="06-sermon-editor.html"><svg viewBox="0 0 24 24" width="16" height="16" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Editor</a><span class="title">Export: The Power of a Transformed Mind</span><span style="flex:1"></span><button class="btn">Cancel</button><button class="btn primary"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Export PDF</button></header>
+<div class="ex">
+  <aside class="opts">
+    <div class="th">Format</div>
+    <div class="fmt"><label class="on"><b>Pulpit Edition</b><span>Large type, main points, Scripture, optional cues</span></label><label><b>Manuscript</b><span>Full text, PDF or Word</span></label><label><b>Printable outline</b><span>One page of points</span></label><label><b>Speaker notes</b><span>Short prompts per section</span></label><label><b>Plain text</b><span>For pasting anywhere</span></label></div>
+    <div class="th" style="margin-top:18px">Include</div>
+    <div class="small" style="display:grid;gap:8px"><span class="row" style="gap:8px"><input type="checkbox" checked> Full Scripture text</span><span class="row" style="gap:8px"><input type="checkbox" checked> Pulpit cues</span><span class="row" style="gap:8px"><input type="checkbox"> Stories in full</span><span class="row" style="gap:8px"><input type="checkbox"> SELAH suggestions you accepted (marked)</span></div>
+    <div class="th" style="margin-top:18px">Translation</div><div class="seg"><span class="on">KJV</span><span>WEB</span><span>BSB</span></div>
+    <div class="th" style="margin-top:18px">Paper</div><div class="seg"><span class="on">A4</span><span>Letter</span></div>
+    <p class="small muted" style="margin-top:16px">Exports are made on your device when offline and include the translation’s attribution.</p>
+  </aside>
+  <section class="prev"><div class="paper2">
+    <div class="ph"><img src="../brand/selah-symbol-navy.svg" width="22"><span>Pulpit Edition</span><span style="margin-left:auto">Sunday 22 November</span></div>
+    <h1>The Power of a Transformed Mind</h1><div class="ref" style="font-size:15px">Romans 12:1–2</div>
+    <h2>1. A living sacrifice</h2>
+    <ul><li>Mercy first. Response second.</li><li>Not a ritual: a life.</li></ul>
+    <div class="scripture" style="font-size:17px"><div class="who"><span class="ref">Romans 12:1</span><span class="tr">KJV</span></div>I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.</div>
+    <p class="cue">Pause. Ask: what did you bring to God this week?</p>
+    <h2>2. Rejecting conformity</h2>
+    <ul><li>“Be not conformed”: a command, not a suggestion.</li></ul>
+    <div class="pf">Page 1 of 3 · Scripture: King James Version, public domain</div>
+  </div></section>
+</div>
+</body>
+</html>
