@@ -74,3 +74,17 @@ Please confirm or correct these statements before launch, since only you can vou
 - That server logs may be kept as long as needed. If you want a fixed period, tell me and I will set it in the logger and the notice.
 
 These pages are plain language drafts, not legal advice. Have a lawyer read them before you launch publicly, especially because pastoral content can be sensitive.
+
+## Android app (added 2026-11-18)
+
+Decided in `docs/adr/0007-mobile-apps.md`: React Native with Expo, Android first. To put it on Google Play you will need:
+
+- **A Google Play Console account** (one time fee, about 25 US dollars).
+- **The final application id.** It is `com.zionnaireconcepts.selah` for now (`Mobile/app.json`). It cannot change once the app is published, so confirm it or choose another.
+- **An Expo account** (free) to build the signed release with EAS Build, and a decision on who holds the signing key. Google Play App Signing is the usual choice.
+- **A proper adaptive icon.** The current foreground is the 512 pixel symbol. A designer or a pass on the design files can improve the safe zone.
+- **Play Console declarations:** the Privacy notice URL (needs the domain), the data safety form (answers follow the Privacy notice) and the content rating.
+- **The API address** the app should call in production (`EXPO_PUBLIC_API_URL`). It needs the domain from the deployment list.
+- iOS later needs an Apple Developer account (99 US dollars a year) and signing.
+
+Testing on your own phone is already possible: install Expo Go from Google Play, run `npm start` in `Mobile/`, and scan the code. Expo Go has limits, so a development build comes before any release.

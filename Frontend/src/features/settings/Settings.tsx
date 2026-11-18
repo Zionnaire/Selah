@@ -1,4 +1,4 @@
-import { TRANSLATIONS } from '@selah/domain';
+import { CROSSREF_ATTRIBUTION, TRANSLATIONS } from '@selah/domain';
 import { Download, HardDrive, Monitor, Moon, Sun, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -203,6 +203,15 @@ export function Settings() {
         <section className="card">
           <h2 className="card-title">About</h2>
           <p className="muted small">SELAH 0.1. Scripture study and sermon preparation that works without internet.</p>
+          <h3 className="card-title" style={{ marginTop: 14 }}>Credits</h3>
+          <ul className="muted small credits">
+            {TRANSLATIONS.map((t) => (
+              <li key={t.id}>{t.attribution}</li>
+            ))}
+            <li>{CROSSREF_ATTRIBUTION}</li>
+            <li>Original language data: STEPBible-Data by Tyndale House, Cambridge (STEPBible.org), CC BY 4.0, with fields selected and reformatted by SELAH. Hebrew lexicon: OpenScriptures Hebrew Lexicon, CC BY 4.0.</li>
+            <li>Bible dictionary: Smith's Bible Dictionary, 1884, public domain.</li>
+          </ul>
           <p className="small">
             <Link to="/welcome">Welcome page</Link> · <Link to="/privacy" state={{ from: '/settings' }}>Privacy notice</Link> · <Link to="/terms" state={{ from: '/settings' }}>Terms</Link>
           </p>

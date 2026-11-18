@@ -54,6 +54,56 @@ describe('sign in and tokens', () => {
   });
 });
 
+describe('native app sign in', () => {
+  const NATIVE = { 'X-SELAH-Client': 'native' };
+  const creds = { email: 'native@example.org', password: 'a-good-password-1' };
+  const login = () => request(app).post('/api/v1/auth/login').set(NATIVE).send(creds);
+
+  it('returns the refresh token in the body and sets no cookie', async () => {
+    await request(app).post('/api/v1/auth/register').send({ name: 'N', ...creds });
+    const res = await login();
+    expect(res.status).toBe(200);
+    expect(typeof res.body.refreshToken).toBe('string');
+    expect(res.headers['set-cookie']).toBeUndefined();
+  });
+
+  it('keeps the web path as it was: a cookie and no token in the body', async () => {
+    await request(app).post('/api/v1/auth/register').send({ name: 'N', ...creds });
+    const res = await request(app).post('/api/v1/auth/login').send(creds);
+    expect(res.body.refreshToken).toBeUndefined();
+    expect(res.headers['set-cookie']).toBeDefined();
+  });
+
+  it('rotates the token from the body and revokes the family when an old one is replayed', async () => {
+    await request(app).post('/api/v1/auth/register').send({ name: 'N', ...creds });
+    const first = (await login()).body.refreshToken as string;
+    const second = await request(app).post('/api/v1/auth/refresh').set(NATIVE).send({ refreshToken: first });
+    expect(second.status).toBe(200);
+    expect(second.body.refreshToken).not.toBe(first);
+
+    const replay = await request(app).post('/api/v1/auth/refresh').set(NATIVE).send({ refreshToken: first });
+    expect(replay.status).toBe(401);
+    const dead = await request(app).post('/api/v1/auth/refresh').set(NATIVE).send({ refreshToken: second.body.refreshToken });
+    expect(dead.status).toBe(401);
+  });
+
+  it('does not accept a cookie as a native token, or a missing or oversize token', async () => {
+    await request(app).post('/api/v1/auth/register').send({ name: 'N', ...creds });
+    const web = await request(app).post('/api/v1/auth/login').send(creds);
+    const cookie = (web.headers['set-cookie'] as unknown as string[])[0]!.split(';')[0]!;
+    expect((await request(app).post('/api/v1/auth/refresh').set(NATIVE).set('Cookie', cookie).send({})).status).toBe(401);
+    expect((await request(app).post('/api/v1/auth/refresh').set(NATIVE).send({})).status).toBe(401);
+    expect((await request(app).post('/api/v1/auth/refresh').set(NATIVE).send({ refreshToken: 'x'.repeat(500) })).status).toBe(401);
+  });
+
+  it('signs out by revoking the token it sends', async () => {
+    await request(app).post('/api/v1/auth/register').send({ name: 'N', ...creds });
+    const token = (await login()).body.refreshToken as string;
+    expect((await request(app).post('/api/v1/auth/logout').set(NATIVE).send({ refreshToken: token })).status).toBe(204);
+    expect((await request(app).post('/api/v1/auth/refresh').set(NATIVE).send({ refreshToken: token })).status).toBe(401);
+  });
+});
+
 describe('password reset', () => {
   it('gives the same answer for an unknown email and sends nothing', async () => {
     await signUp();

@@ -17,7 +17,7 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
-      # Used once sign in ships. The public URL of the API, no trailing slash.
+      # The public URL of the API, no trailing slash. Read when the site is built, so changing it needs a rebuild.
       - key: VITE_API_URL
         sync: false
     headers:

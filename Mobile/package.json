@@ -1,0 +1,53 @@
+{
+  "name": "selah-mobile",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "dependencies": {
+    "@expo-google-fonts/cormorant-garamond": "^0.4.1",
+    "@expo-google-fonts/inter": "^0.4.2",
+    "@expo-google-fonts/literata": "^0.4.3",
+    "@expo/log-box": "^58.0.15",
+    "@expo/metro-runtime": "~58.0.17",
+    "expo": "~58.0.26",
+    "expo-asset": "~58.0.21",
+    "expo-constants": "~58.0.16",
+    "expo-dev-client": "~58.0.21",
+    "expo-file-system": "~58.0.14",
+    "expo-font": "~58.0.12",
+    "expo-linking": "~58.0.17",
+    "expo-router": "~58.0.32",
+    "expo-secure-store": "~58.0.3",
+    "expo-sqlite": "~58.0.18",
+    "expo-status-bar": "~58.0.5",
+    "expo-updates": "~58.0.22",
+    "lucide-react-native": "^1.75.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-safe-area-context": "~5.11.1",
+    "react-native-screens": "~4.30.1",
+    "react-native-svg": "15.16.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/react": "~19.3.0",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "prestart": "node scripts/tokens.mjs && node scripts/assets.mjs",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "tokens": "node scripts/tokens.mjs",
+    "assets": "node scripts/assets.mjs",
+    "typecheck": "node scripts/tokens.mjs && node scripts/assets.mjs && tsc --noEmit",
+    "eas-build-post-install": "node scripts/tokens.mjs && node scripts/assets.mjs",
+    "build:preview": "eas build --platform android --profile preview",
+    "build:production": "eas build --platform android --profile production",
+    "build:store": "eas build --platform android --profile store",
+    "build:development": "eas build --platform android --profile development",
+    "update:preview": "node scripts/tokens.mjs && node scripts/assets.mjs && eas update --channel preview --environment preview --message",
+    "update:production": "node scripts/tokens.mjs && node scripts/assets.mjs && eas update --channel production --environment production --message"
+  },
+  "private": true
+}

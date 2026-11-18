@@ -1,0 +1,13 @@
+node_modules/
+.expo/
+dist/
+android/
+ios/
+assets/data/
+src/theme/tokens.generated.ts
+expo-env.d.ts
+*.log
+.claude/
+.env
+.env.*
+!.env.example

@@ -58,6 +58,7 @@ The web app works fully without the API today: it runs as a guest, with everythi
 | Sync API: push and pull, conflicts, history, quotas (ADR 0005), merge engine in `packages/domain` | Done, 52 API and 75 domain tests |
 | Sync in the app: backup offer, automatic and manual sync, merge, conflict review, delete forever reaching other devices, status in the rail and Settings | Done, verified with two devices against a local API. Version history has no screen yet (kept 30 days) |
 | Sermon suggestions: Topic field, SELAH suggests points, introductions and conclusions with editable text and Scripture you read in full before adding (ADR 0004 amendment) | Done, Beta. Needs `GROQ_API_KEY` on the server and a sign in |
+| Native Android app (React Native and Expo, `Mobile/`, ADR 0007): foundation, offline Bible reader with highlights and bookmarks, sign in with the token in secure storage, light and dark from the shared tokens | Started. Verified on an Android emulator. Library, Sermon Studio, Pulpit, sync and the rest are next, in the order in ADR 0007 |
 | Collapsible side areas: navigation rail, sermon editor panels, library sections, study tools, export options. One light and dark control on every page | Done |
 | Profile picture, name and church, on the account | Done |
 | Front page for new visitors (`/welcome`) | Done |

@@ -23,7 +23,8 @@ A change is not done until `pnpm typecheck`, `pnpm test` and `pnpm build` pass a
 ```
 Frontend/         Vite + React PWA. SQLite (WASM) in a Web Worker on OPFS holds all user data.
 Backend/src/      Configs Models Repositories Services Controllers Routes Middlewares Utils Types.ts
-packages/domain   Shared: books, references, sermon/note/study/export models, zod schemas. Pure, tested.
+packages/domain   Shared: books, references, sermon/note/study/export models, zod schemas, DB migrations. Pure, tested.
+Mobile/           Native app (React Native and Expo, Android first). Outside the pnpm workspace, own npm lockfile, shares only packages/domain. See ADR 0007.
 packages/tokens   Design tokens (CSS variables), light, dark and Pulpit themes.
 docs/             design/ (the visual source of truth), adr/, deployment.md, needs-from-you.md
 ```

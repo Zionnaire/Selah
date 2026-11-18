@@ -11,3 +11,4 @@ export * from './morphology';
 export * from './richtext';
 export * from './sync';
 export * from './suggest';
+export * from './schema';

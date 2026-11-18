@@ -153,3 +153,10 @@
   font-size: var(--text-sm);
   color: var(--text-3);
 }
+
+.credits {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+}
