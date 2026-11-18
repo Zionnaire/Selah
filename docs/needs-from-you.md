@@ -18,9 +18,9 @@ This is a personal project, so it needs its own domain. Read `docs/deployment.md
 
 Until then everything works locally and offline. Only password reset emails and a live deployment wait on this.
 
-### B. Berean Standard Bible dedication (yours to sign off)
+### B. Berean Standard Bible dedication: recorded
 
-You are researching this. When done, record the source URL and date in `docs/adr/0003-bible-licensing.md`.
+Done on 2026-11-18. The official statement, URL and date are in `docs/adr/0003-bible-licensing.md`. Two things remain before launch: read the site's Terms and Conditions page, and compare our BSB text with the official `bsb.txt` (ours comes from a third party copy).
 
 ### C. Groq data controls: done
 

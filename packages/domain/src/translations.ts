@@ -61,7 +61,7 @@ export const TRANSLATIONS: readonly TranslationInfo[] = [
     language: 'en',
     year: '2023',
     license: 'public-domain',
-    attribution: 'Berean Standard Bible. Dedicated to the public domain by Bible Hub.',
+    attribution: 'Berean Standard Bible. Placed in the public domain on 30 April 2023 (berean.bible/licensing.htm).',
     offlineAllowed: true,
     bundled: false,
     sizeMb: 4.2,
